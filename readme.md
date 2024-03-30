@@ -6,9 +6,9 @@ qq昵称小尾巴生成器源代码
 [示例站点](https://xiaozhisans.github.io/qtail)
   
 ### 部署本地
-`git clone git@github.com:XiaozhiSans/qtail.git
-cd qtail
-start index.html`
+`git clone git@github.com:XiaozhiSans/qtail.git`  
+`cd qtail`  
+`start index.html`  
   
 ## 协议
 >
