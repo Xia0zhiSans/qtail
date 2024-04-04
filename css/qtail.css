@@ -3,7 +3,7 @@
 * name:
 * author: XiaozhiSans
 * creative date: 2024/03/29
-* update date: 2024/03/30
+* update date: 2024/04/04
 */
 
 /* 原生美化 */
@@ -39,6 +39,17 @@ textarea#result {
 	background-image: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
 }
 
+div.noscriptPnl {
+	width: 100%;
+	display: flex;
+	font-size: 120%;
+	border: 100px solid black;
+	padding: 10px;
+	position: fixed;
+	background-color: deeppink;
+	z-index: 10;
+	margin: 10% -110px;
+}
 div.qtailBox {
 	width: auto;
 	display: flex;
@@ -125,6 +136,9 @@ input[type="text"] {
 	-webkit-animation: rgbColor 4s infinite linear;
 	background-image: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
 }
+input[type="checkbox"] {
+	font-size: 120%;
+}
 
 @keyframes rgbColor {
 	0% {
@@ -137,29 +151,84 @@ input[type="text"] {
 }
 
 /* 自定义部分 */
+[tooltip] {
+	bottom: calc(100% + 10px);
+	transform: translate(-50%, 0);
+	position: relative;
+
+	&::after {
+		display: none;
+		content: attr(tooltip);
+		position: absolute;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		padding: 8px 15px;
+		max-width: 400px;
+		border-radius: 4px;
+		color: black;
+		background-color: deepskyblue;
+		box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.4);
+		z-index: 100;
+	}
+	&::before {
+		display: none;
+		position: absolute;
+		border: 5px solid transparent;
+		z-index: 100;
+	}
+
+	&:hover {
+		&::after {
+			display: block;
+		}
+		&::before {
+			display: block;
+		}
+	}
+}
+
 succBtn {
+	width: 15%;
 	padding: 7px;
 	cursor: pointer;
 	font-size: 125%;
 	user-select: none;
+	text-align: center;
 	background-color: #ffff99;
-	border-radius: 10% 10% 10% 10%;
+	border-radius: 15% 15% 15% 15%;
 }
 
 succBtn:hover {
-	border: 2px solid blue;
+	/* margin: -1px 0;*/ 
+	border: 2px dashed blue;
+	background-color: yellow;
 }
 
 tabBtn {
-	margin: 2px;
-	color: white;
 	padding: 2px;
+	margin: 0 2px;
+	left: 15%;
 	cursor: pointer;
 	border-radius: 10% 10% 10% 10%;
 }
-tabBtn:hover {
-	color: black;
+tabBtn.share:hover {
+	background-color: orange;
+}
+tabBtn.donation:hover {
+	color: red;
+	background-color: pink;
+}
+tabBtn.exit:hover {
 	background-color: red;
+}
+tabBtn#hide:hover {
+	background-color: #fffa;
+}
+tabBtn.tooltip {
+		position: relative;
+		display: inline-block;
+		border-bottom: 1px dotted black;
 }
 
 #disabled {
@@ -176,6 +245,7 @@ copyBtn {
 }
 
 copyBtn:hover {
+	margin: -1px 0;
 	border: 1px solid yellow;
 }
 
@@ -215,6 +285,14 @@ img#visitor-counter {
 		background-image: url("https://i0.imgs.ovh/2024/03/17/enXR3.png");
 	}
 
+	succBtn {
+		width: 6%;
+		margin: 0 88%;
+	}
+	succBtn:hover {
+		margin: 1px 88%;
+	}
+
 	.btnPnl {
 		width: 100%;
 		margin: -2px 85%;
@@ -252,6 +330,13 @@ img#visitor-counter {
 		/* 移动端默认窗口壁纸 */
 		/* background-image: url("https://pic.imgdb.cn/item/6607a1b59f345e8d03ce5061.jpg"); */
 		margin: 5% 0;
+	}
+
+	succBtn {
+		margin: 0 72%;
+	}
+	succBtn:hover {
+		margin: -1px 72%;
 	}
 
 	.btnPnl {

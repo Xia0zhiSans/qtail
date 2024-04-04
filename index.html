@@ -1,13 +1,13 @@
 <!--
 	file: index.html
-	name: qtail check script page
+	name: qtail homepage
 	author: XiaozhiSans
-	creative date: 2024/03/28
-	update date: 2024/04/30
+	creative date: 2024/03/30
+	update date: 2024/04/04
 -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1, edge=1">
@@ -17,19 +17,79 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>qtail | qq昵称小尾巴生成器</title>
 		<link rel="shortcut icon" type="image/png" href="img/qtail.png">
-		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/qtail.css">
+		<script type="text/javascript" src="js/qtail.js"></script>
+		<!-- 放弃使用 device.js  -->
+		<!-- <script type="text/javascript" src="js/device.js"></script> -->
+		<style id="customBg" type="text/css">
+			/* 更改壁纸接口 */
+		</style>
 	</head>
 	<body>
-		
 		<noscript>
-			JavaScript is required for this site, but your browser does'nt support JavaScript or JavaScript is disabled.<br>
-			Please check your browser settings and try again.
+			<div class="noscriptPnl">
+				JavaScript is required for this site, but your browser does'nt support JavaScript<br>
+				or JavaScript was disabled.<br>
+				Please check your browser settings and try again.
+			</div>
 		</noscript>
-		<script type="text/javascript">
-			<!--
-				onload = open("qtail.html", "_self");
-			// -->
-		</script>
+		<div note="主窗口" id="bg">
+			<div class="tabPnl">
+				<!-- 窗口顶栏内容 -->
+				<p id="tabText">qtail - qq昵称小尾巴生成器</p>
+				<div class="tabBtnPnl">
+					<tabBtn class="share" onclick="qtail.share();" tooltip="分享">📲</tabBtn>
+					<tabBtn class="donation" onclick="qtail.donation();" tooltip="喜欢">❤</tabBtn>
+					<tabBtn class="exit" onclick="qtail.exit();" tooltip="关闭">✖</tabBtn>
+				</div>
+			</div>
+			<div class="qtailBox">
+				<p id="verText">Running qtail Alpha v114.514</p>
+		<script type="text/javascript">qtail.getVer();</script>
+				<!-- [一言] <p id="sentence">:D 一言获取中...</p> -->
+				<form id="qtail" action="" method="">
+					<div>
+						<label for="name">你的昵称(最大20字符)</label>
+						<input type="text" id="name" name="name" required value="qtail" maxlength="20">
+					</div><div>
+						<label for="tail">你想要的小尾巴(最大70字符)</label>
+						<input type="text" id="tail" name="tail" required value="喵~" maxlength="70">
+					</div><div>
+						<input type="checkbox" id="rstr" name="rstr" value="true">
+						<label for="rstr" id="rstr" tooltip="当生成的昵称中尾巴没有按预期显示时开启。">rstr 模式（不支持符号）</label>
+					</div>
+				</form><br>
+				<succBtn onclick="qtail.main();">生成</succBtn>
+				<img id="visitor-counter" src="https://count.getloli.com/get/@qtail?theme=rule34" alt="页面累计被访问次数">
+			</div>
+			<div class="resultBox">
+				<div>
+					<label for="result">这就是你的新昵称哒 ~(￣▽￣)~</label>
+					<copyBtn onclick="qtail.copy();" tooltip="复制">📋</copyBtn>
+				</div>
+				<textarea id="result" readonly>ㄟ( ▔, ▔ )ㄏ 还没有生成昵称呢,快去试试吧</textarea>
+			</div>
+		</div>
+
+		<footer>
+			<div class="footerBox">
+				<div class="tabPnl" id="footerTabFix">
+					<p id="tabText">qtail - 底栏</p>
+					<div class="tabBtnPnl">
+						<tabBtn id="disabled"></tabBtn>
+						<tabBtn id="disabled"></tabBtn>
+						<tabBtn id="hide" onclick="qtail.hideFooter();" tooltip="隐藏">➖</tabBtn>
+					</div>
+				</div>
+				<div class="footerPnl" id="footerPnl">
+					<p>
+						<a href="https://github.com/XiaozhiSans/qtail">开放源代码</a> | <a href="#" onclick="qtail.changeBoxAlpha();">窗口透明度</a><br>
+						<a href="#" onclick="qtail.changeBoxBg();" id="disabled">更改窗口壁纸</a> | <a href="#" onclick="qtail.changeBg();">更改桌面壁纸</a><br>
+						Copyright (c) 2024 <a href="https://github.com/XiaozhiSans">XiaozhiSans</a>
+					</p>
+				</div>
+			</div>
+		</footer>
 	
 	</body>
 </html>

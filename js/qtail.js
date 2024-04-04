@@ -1,7 +1,7 @@
 const appName = "qtail";
 const appShortName = "qtail";
-const version = "v1.2";
-const bulidVer = "(20240330)";
+const version = "v1.4";
+const bulidVer = "(20240404)";
 const bulidType = "Beta";
 const license = "MIT License";
 const author = "XiaozhiSans";
@@ -36,10 +36,13 @@ const qtail= {
 
 		var name = qtailData.get("name");
 		var tail = qtailData.get("tail");
+		var rstr = qtailData.get("rstr");
+		console.log(appNameLog + "rstr mode: " + rstr);
 		console.log(appNameLog + "获取到昵称：" + name + " 获取到尾巴：" + tail);
 
 		console.log(appNameLog + "生成新的昵称 (￣﹃￣)");
-		tail = qtail.reverseStr(tail);
+		if(rstr) {}
+		else {tail = qtail.reverseStr(tail);}
 
 		result = name + '⁧' + tail + '⁦';
 
@@ -62,6 +65,20 @@ const qtail= {
 		document.execCommand("copy");
 		alert("复制成功 (￣﹃￣)");
 		return 0;
+	},
+	share: function() {
+		if(!navigator.share) {alert("您的浏览器不支持分享功能！ (￣﹃￣)"); return -1;}
+		else {navigator.share({title: window.location.title, url: window.location.href, text: "hi，我发现了一个超有意思的昵称生成器——qq昵称小尾巴在线生成器"}); return 0;}
+	},
+	donation: function() {
+		if(confirm("感谢您的支持！ ✪ ω ✪")) {return 0;}
+		else {return -1;}
+	},
+	exit: function() {
+		if(confirm("您确定要关闭 qtail 吗？ ＞︿＜")) {
+			console.log("qtail 已断开连接");
+			window.location.href="about:blank";
+		}
 	},
 	changeBg: function() {
 		const bg = document.getElementById("customBg");
@@ -99,15 +116,22 @@ const qtail= {
 		return 0;
 	},
 	hideFooter: function() {
-		const footer = document.getElementById("footerPnl"), tabBtn = document.getElementById("footerTabBtn");
+		const footer = document.getElementById("footerPnl"), hideBtn = document.getElementById("hide");
 		footer.setAttribute("style", "display: none;");
-		tabBtn.setAttribute("onclick", "qtail.displayFooter();");
-		tabBtn.innerHTML = "➕";
+		hideBtn.setAttribute("onclick", "qtail.displayFooter();");
+		hideBtn.setAttribute("tooltip", "显示")
+		hideBtn.innerHTML = "➕";
+		return 0;
 	},
 	displayFooter: function() {
-		const footer = document.getElementById("footerPnl"), tabBtn = document.getElementById("footerTabBtn");
+		const footer = document.getElementById("footerPnl"), hideBtn = document.getElementById("hide");
 		footer.setAttribute("style", "display: block;");
-		tabBtn.setAttribute("onclick", "qtail.hideFooter();");
-		tabBtn.innerHTML = "➖";
-	}
+		hideBtn.setAttribute("onclick", "qtail.hideFooter();");
+		hideBtn.setAttribute("tooltip", "隐藏");
+		hideBtn.innerHTML = "➖";
+		return 0;
+	}/*,
+	sentence: function() {
+		
+	}*/
 }
