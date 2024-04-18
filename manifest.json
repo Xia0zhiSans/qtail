@@ -1,0 +1,16 @@
+{
+	"name": "qtail",
+	"short_name": "qtail",
+	"theme_color": "#FF1493",
+	"background_color": "#FF1493",
+	"display": "fullscreen",
+	"scope": "/",
+	"start_url": "/",
+	"icons": [
+		{
+			"src": "img/qtail.png",
+			"sizes": "128x128",
+			"type": "image/png"
+		}
+	]
+}

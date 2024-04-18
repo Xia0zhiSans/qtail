@@ -2,11 +2,12 @@
 * file: qtail.css
 * name:
 * author: XiaozhiSans
-* creative date: 2024/03/29
-* update date: 2024/04/04
+* create date: 2024/03/29
+* update date: 2024/04/18
 */
 
-/* 原生美化 */
+/* 石山css,不要乱改,很可能牵一发动全身 (￣▽￣)" */
+
 a {
 	color: blue;
 	text-decoration: none;
@@ -100,6 +101,7 @@ div.tabPnl {
 }
 div.tabBtnPnl {
 	float: right;
+	/* margin-right: 12.5%; */
 }
 div.tabPnl#footerTabFix {
 	margin: 10% 0;
@@ -111,6 +113,17 @@ div#bg {
 	/* 全局默认窗口壁纸 */
 	/* 会覆盖桌面端桌面壁纸，已禁用 */
 	/* background-image: url("https://pic.imgdb.cn/item/6607a1b59f345e8d03ce5061.jpg"); */
+}
+p.atext {
+	background-color: #FF149364;
+	font-size: 75%;
+	font-weight: bold;
+	text-align: center;
+	-webkit-background-clip: text;
+	-webkit-background-size: 200% 100%;
+	-webkit-text-fill-color: transparent;
+	-webkit-animation: rgbColor 4s infinite linear;
+	background-image: -webkit-linear-gradient(left, #FF1493, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
 }
 
 p#verText {
@@ -129,9 +142,9 @@ label {}
 input[type="text"] {
 	width: 95%;
 	font-size: 150%;
+	border-radius: 10px;
 	-webkit-background-clip: text;
 	-webkit-background-size: 200% 100%;
-	border-radius: 10px 10px 10px 10px;
 	-webkit-text-fill-color: transparent;
 	-webkit-animation: rgbColor 4s infinite linear;
 	background-image: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
@@ -150,11 +163,11 @@ input[type="checkbox"] {
 	}
 }
 
-/* 自定义部分 */
-[tooltip] {
+/* 悬停提示 */
+/* [tooltip] {
 	bottom: calc(100% + 10px);
 	transform: translate(-50%, 0);
-	position: relative;
+	position: absolute;
 
 	&::after {
 		display: none;
@@ -168,7 +181,7 @@ input[type="checkbox"] {
 		border-radius: 4px;
 		color: black;
 		background-color: deepskyblue;
-		box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.4);
+		box-shadow: 0 10px 20px -5px #0004;
 		z-index: 100;
 	}
 	&::before {
@@ -186,6 +199,31 @@ input[type="checkbox"] {
 			display: block;
 		}
 	}
+} */
+input#rstr+label#rstr {
+	user-select: none;
+	margin-left: 32px;
+	font-size: 110%;
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		width: 32px;
+		height: 32px;
+		background: url("../img/checkbox.webp");
+		background-size: cover;
+	}
+}
+input#rstr:checked+label#rstr {
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		width: 32px;
+		height: 32px;
+		background: url("../img/checkbox_.webp");
+		background-size: cover;
+	}
 }
 
 succBtn {
@@ -194,21 +232,20 @@ succBtn {
 	cursor: pointer;
 	font-size: 125%;
 	user-select: none;
+	position: absolute;
 	text-align: center;
 	background-color: #ffff99;
-	border-radius: 15% 15% 15% 15%;
+	border-radius: 10px;
 }
 
 succBtn:hover {
-	/* margin: -1px 0;*/ 
+	margin: -1px;
 	border: 2px dashed blue;
 	background-color: yellow;
 }
 
 tabBtn {
-	padding: 2px;
-	margin: 0 2px;
-	left: 15%;
+	padding: 4px;
 	cursor: pointer;
 	border-radius: 10% 10% 10% 10%;
 }
@@ -225,11 +262,6 @@ tabBtn.exit:hover {
 tabBtn#hide:hover {
 	background-color: #fffa;
 }
-tabBtn.tooltip {
-		position: relative;
-		display: inline-block;
-		border-bottom: 1px dotted black;
-}
 
 #disabled {
 	color: grey;
@@ -237,7 +269,6 @@ tabBtn.tooltip {
 }
 
 copyBtn {
-	float: right;
 	padding: 1px;
 	cursor: pointer;
 	user-select: none;
@@ -245,7 +276,6 @@ copyBtn {
 }
 
 copyBtn:hover {
-	margin: -1px 0;
 	border: 1px solid yellow;
 }
 
@@ -262,10 +292,10 @@ img#visitor-counter {
 	div.resultBox,
 	div.tabPnl {
 		width: 60%;
-		margin: 0 20%;
+		margin: 0 10%;
 	}
 	div.tabPnl {
-		margin: -5px 20%;
+		margin: -5px 10%;
 	}
 	div.footerPnl {
 		width: 40%;
@@ -280,9 +310,13 @@ img#visitor-counter {
 	}
 
 	body {
-		background-size: auto 125%;
+		background-size: auto 200%;
 		/* 桌面端默认桌面壁纸 */
-		background-image: url("https://i0.imgs.ovh/2024/03/17/enXR3.png");
+		background-image: url("https://s21.ax1x.com/2024/04/12/pFXqo7R.jpg");
+	}
+
+	copyBtn {
+		margin-left: 65%;
 	}
 
 	succBtn {
@@ -304,17 +338,18 @@ img#visitor-counter {
 	body {
 		background-size: auto 125%;
 		/* 移动端默认桌面壁纸 */
-		background-image: url("https://i0.imgs.ovh/2024/03/21/eayT5.png");
+		background-image: url("https://s21.ax1x.com/2024/04/18/pFzwM6O.png");
 	}
 	div.qtailBox,
 	div.resultBox,
 	div.tabPnl {
 		width: 95%;
-		margin: unset;
+		margin-top: -1%;
+		margin-left: -3px;
 	}
-	div.tabPnl {
-		margin: -5px 0;
-	}
+	/*div.tabPnl {
+		margin-top: -1%;
+	}*/
 	div.footerPnl {
 		width: 70%;
 		margin: 0 0;
@@ -330,6 +365,10 @@ img#visitor-counter {
 		/* 移动端默认窗口壁纸 */
 		/* background-image: url("https://pic.imgdb.cn/item/6607a1b59f345e8d03ce5061.jpg"); */
 		margin: 5% 0;
+	}
+
+	copyBtn {
+		margin-left: 32.5%;
 	}
 
 	succBtn {
