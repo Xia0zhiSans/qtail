@@ -13,7 +13,12 @@ qq昵称小尾巴生成器源代码
 ### 引入 html
 ```html
 <!-- 载入 qtail.js -->
-<script type="text/javascript" src="js/qtail.js"></script>
+<script type="text/javascript" src="https://xiaozhisans.github.io/qtail/js/qtail.js"></script>
+```
+或者  
+```html
+<!-- 载入 qtail.js -->
+<script type="text/javascript" src="https://raw.githubusercontent.com/XiaozhiSans/qtail/main/js/qtail.js"></script>
 ```
   
 ## 协议
