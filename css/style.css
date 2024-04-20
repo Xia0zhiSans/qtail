@@ -1,9 +1,9 @@
 /*
-* file: qtail.css
-* name:
+* file: style.css
+* name: 石山css
 * author: XiaozhiSans
 * create date: 2024/03/29
-* update date: 2024/04/18
+* update date: 2024/04/20
 */
 
 /* 石山css,不要乱改,很可能牵一发动全身 (￣▽￣)" */
@@ -19,7 +19,7 @@ a:hover {
 }
 body {
 	color: black;
-	background-color: black;
+	background-color: deeppink;
 	background-repeat: no-repeat;
 	font-family: "微软雅黑", "Microsoft Yahei";
 }
@@ -199,7 +199,7 @@ input[type="checkbox"] {
 			display: block;
 		}
 	}
-} */
+}
 input#rstr+label#rstr {
 	user-select: none;
 	margin-left: 32px;
@@ -223,6 +223,20 @@ input#rstr:checked+label#rstr {
 		height: 32px;
 		background: url("../img/checkbox_.webp");
 		background-size: cover;
+	}
+} */
+
+[tooltip]:hover {
+	&::after {
+		position: absolute;
+		content: attr(tooltip);
+		display: block;
+		font-size: 80%;
+		padding: 5px;
+		z-index: 10;
+		background-color: orange;
+		border-radius: 10px;
+		box-shadow: 0 10px 20px -5px #0004;
 	}
 }
 
@@ -272,6 +286,7 @@ copyBtn {
 	padding: 1px;
 	cursor: pointer;
 	user-select: none;
+	position: absolute;
 	border-radius: 10% 10% 10% 10%;
 }
 
@@ -312,7 +327,7 @@ img#visitor-counter {
 	body {
 		background-size: auto 200%;
 		/* 桌面端默认桌面壁纸 */
-		background-image: url("https://s21.ax1x.com/2024/04/12/pFXqo7R.jpg");
+		background-image: url("https://cdn.jsdelivr.net/gh/XiaozhiSans/imgbed@2024-04-20-01/XiaozhiSans/background.jpg");
 	}
 
 	copyBtn {
@@ -338,14 +353,14 @@ img#visitor-counter {
 	body {
 		background-size: auto 125%;
 		/* 移动端默认桌面壁纸 */
-		background-image: url("https://s21.ax1x.com/2024/04/18/pFzwM6O.png");
+		background-image: url("https://cdn.jsdelivr.net/gh/XiaozhiSans/imgbed@2024-04-20-01/XiaozhiSans/115323172_p0.png");
 	}
 	div.qtailBox,
 	div.resultBox,
 	div.tabPnl {
-		width: 95%;
+		width: 88%;
 		margin-top: -1%;
-		margin-left: -3px;
+		margin-left: -2px;
 	}
 	/*div.tabPnl {
 		margin-top: -1%;

@@ -3,7 +3,7 @@
 	"short_name": "qtail",
 	"theme_color": "#FF1493",
 	"background_color": "#FF1493",
-	"display": "fullscreen",
+	"display": "standalone",
 	"scope": "/",
 	"start_url": "/",
 	"icons": [

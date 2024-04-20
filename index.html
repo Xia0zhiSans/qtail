@@ -3,7 +3,7 @@
 	name: qtail homepage
 	author: XiaozhiSans
 	creative date: 2024/03/30
-	update date: 2024/04/18
+	update date: 2024/04/20
 -->
 
 <!DOCTYPE html>
@@ -17,11 +17,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>qtail | qq昵称小尾巴生成器</title>
 		<link rel="shortcut icon" type="image/png" href="img/qtail.png">
-		<link rel="stylesheet" type="text/css" href="css/qtail.css">
+		<!-- 提前载入的脚本和层叠样式表 -->
+		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script type="text/javascript" src="js/qtail.js"></script>
-		<style id="customBg" type="text/css">
-			/* 更改壁纸接口 */
-		</style>
+		<script type="text/javascript" src="js/qtail.html.js"></script>
+		<script type="text/javascript" src="js/page.js"></script>
+		<!-- 对苹果设备以及 pwa 的支持 -->
 		<link rel="apple-touch-icon" href="img/qtail.png">
 		<meta name="apple-mobile-web-app-title" content="qtail">
 		<link rel="bookmark" href="img/qtail.png">
@@ -30,6 +31,7 @@
 		<link rel="manifest" href="manifest.json">
 	</head>
 	<body>
+		<!-- 没有脚本权限显示的内容 -->
 		<noscript>
 			<div class="noscriptPnl">
 				JavaScript is required for this site, but your browser does'nt support JavaScript<br>
@@ -37,43 +39,43 @@
 				Please check your browser settings and try again.
 			</div>
 		</noscript>
+		<!-- end 没有脚本权限显示的内容 -->
 
 		<!-- 主窗口 -->
-		<div>
+		<div id="mainWindow">
 			<div class="tabPnl">
-				<!-- 窗口顶栏内容 -->
+				<!-- 窗口顶栏 -->
 				<p id="tabText">qq昵称小尾巴生成器</p>
 				<div class="tabBtnPnl">
-					<tabBtn class="share" onclick="qtail.share();" title="分享">📲</tabBtn>
-					<tabBtn class="donation" onclick="qtail.donation();" title="喜欢">❤</tabBtn>
-					<tabBtn class="exit" onclick="qtail.exit();" title="关闭">✖</tabBtn>
+					<tabBtn class="share" onclick="qtailHtml.share();" tooltip="分享">📲</tabBtn>
+					<tabBtn class="donation" onclick="qtailHtml.donation();" tooltip="喜欢">❤</tabBtn>
+					<tabBtn class="exit" onclick="qtailHtml.exit();" tooltip="关闭">✖</tabBtn>
 				</div>
 			</div>
 			<div class="qtailBox">
 				<p id="verText">Loading...</p>
-				<script type="text/javascript">qtail.getVer();</script>
 				<!-- [一言] <p id="sentence">:D 一言获取中...</p> -->
 				<p class="atext">互联网很美好，但你下载不了爱。<i> —— 游戏《破碎现实》</i></p>
 				<form id="qtail" action="" method="">
 					<div>
-						<label for="name">你的昵称(最大20字符)</label>
+						<label for="name" tooltip="(最大20字符)">*你的昵称</label>
 						<input type="text" id="name" name="name" required value="qtail" maxlength="20">
 					</div><div>
-						<label for="tail">你想要的小尾巴(最大70字符)</label>
+						<label for="tail" tooltip="(最大70字符)">*你想要的小尾巴</label>
 						<input type="text" id="tail" name="tail" required value="喵~" maxlength="70">
 					</div> <!-- <br>
 					<div>
 						<input type="checkbox" id="rstr" name="rstr" value="true" hidden>
 						<label for="rstr" id="rstr" title="当生成的昵称中尾巴没有按预期显示时开启。">rstr 模式（仅支持半角符号）</label>
 					</div> -->
-				<succBtn onclick="qtail.main();">生成</succBtn>
+				<succBtn onclick="qtailHtml.main();">生成</succBtn>
 				</form><br>
-				<img id="visitor-counter" src="https://count.getloli.com/get/@qtail?theme=rule34" alt="页面累计被访问次数">
+				<img id="visitor-counter" src="https://count.getloli.com/get/@qtail?theme=rule34" alt="页面累计被访问次数" tooltip="页面累计被访问次数">
 			</div>
 			<div class="resultBox">
 				<div>
 					<label for="result">这就是你的新昵称哒 ~(￣▽￣)~</label>
-					<copyBtn onclick="qtail.copy();" title="复制">📋</copyBtn>
+					<copyBtn onclick="qtailHtml.copy();" tooltip="复制">📋</copyBtn>
 					<textarea id="result" readonly>(x_x) 还没有生成昵称呢,快去试试吧</textarea>
 				</div>
 			</div>
@@ -81,26 +83,30 @@
 		<!-- end 主窗口 -->
 
 		<!-- 底栏窗口 -->
-		<footer>
+		<footer id="bottomWindow">
 			<div class="footerBox">
 				<div class="tabPnl" id="footerTabFix">
 					<p id="tabText">底栏</p>
 					<div class="tabBtnPnl">
 						<tabBtn id="disabled"></tabBtn>
 						<tabBtn id="disabled"></tabBtn>
-						<tabBtn id="hide" onclick="qtail.hideFooter();" title="隐藏">➖</tabBtn>
+						<tabBtn id="hide" onclick="page.hideFooter();" tooltip="隐藏">➖</tabBtn>
 					</div>
 				</div>
 				<div class="footerPnl" id="footerPnl">
 					<p>
-						<a href="https://github.com/XiaozhiSans/qtail">开放源代码</a> | <a href="#" onclick="qtail.changeBoxAlpha();">窗口透明度</a><br>
-						<a href="#" onclick="qtail.randBg();" title="请期待下个版本（" id="disabled">随机桌面壁纸</a> | <a href="#" onclick="qtail.changeBg();">更改桌面壁纸</a><br>
+						<a href="https://github.com/XiaozhiSans/qtail">开放源代码</a> | <a href="#" onclick="page.changeBoxAlpha();">窗口透明度</a><br>
+						<a href="#" onclick="page.randBg();" tooltip="请期待下个版本（" id="disabled">随机桌面壁纸</a> | <a href="#" onclick="page.changeBg();">更改桌面壁纸</a><br>
 						Copyright (c) 2024 <a href="https://github.com/XiaozhiSans">XiaozhiSans</a>
 					</p>
 				</div>
 			</div>
 		</footer>
 		<!-- end 底栏窗口 -->
-	
+
+		<!-- 最后加载的脚本 -->
+		<script type="text/javascript">qtail.getVer();</script>
+		<!-- end 最后加载的脚本 -->
+
 	</body>
 </html>
