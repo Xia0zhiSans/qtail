@@ -30,7 +30,7 @@ const qtailHtml = {
 		var name = qtailData.get("name");
 		var tail = qtailData.get("tail");
 		if (name == "" || tail == "") {
-			alert("生成已取消 (￣﹃￣) \n 昵称或尾巴不能为空.");
+			qtailHtml.message("生成已取消 (￣﹃￣)<br>昵称或尾巴不能为空.", 3);
 			console.error("qtail.js: on main, error code: -1");
 			return -1;
 		}
@@ -40,27 +40,31 @@ const qtailHtml = {
 
 		console.log("将结果返回页面 (￣﹃￣)");
 		document.getElementById("result").innerHTML = result;
-		alert("生成完毕 (￣﹃￣)");
+		qtailHtml.message("生成完毕 (￣﹃￣)", 3);
+	},
+	message: function(content, time) {
+		let target = document.getElementById("message");
+		target.innerHTML = content;
+		setTimeout(function() {
+			target.innerHTML = null;
+		}, time * 1000);
 	},
 	copy: function() { // 复制结果 (￣﹃￣)
 		const result = document.querySelector("#result");
 		result.select();
 		document.execCommand("copy");
-		alert("复制成功 (￣﹃￣) \n 快去 qq 试试吧");
+		qtailHtml.message("复制成功 (￣﹃￣)<br>快去 qq 试试吧", 3);
 		return 0;
 	},
 	share: function() {
-		if(!navigator.share) {alert("您的浏览器不支持分享功能！ (￣﹃￣)"); return -1;}
+		if(!navigator.share) {qtailHtml.message("您的浏览器不支持分享功能！ (￣﹃￣)", 3); return -1;}
 		else {navigator.share({title: location.title, url: location.href, text: "hi,我发现了一个超有意思的昵称生成器 —— qtail"}); return 0;}
 	},
 	donation: function() {
-		if(confirm("感谢您的支持!! ✪ ω ✪")) {return 0;}
-		else {return -1;}
+		qtailHtml.message("感谢您的支持!! ✪ ω ✪", 3);
 	},
 	exit: function() {
-		if(confirm("您确定要关闭 qtail 吗? ＞︿＜")) {
-			history.back();
-		}
+		window.close();
 	}
 }
 

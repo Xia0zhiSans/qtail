@@ -12,10 +12,11 @@ a {
 	color: blue;
 	text-decoration: none;
 	border: 1px dashed blue;
-	border-radius: 10px 10px 10px 10px;
+	border-radius: 10px;
 }
 a:hover {
-	border: 1px solid blue;
+	/* border: 1px solid blue; */
+	animation: hover 2s infinite;
 }
 body {
 	color: black;
@@ -107,6 +108,40 @@ div.tabPnl#footerTabFix {
 	margin: 10% 0;
 }
 
+div#tipsBox {
+	padding: 5px;
+	position: fixed;
+	bottom: 0;
+	margin-bottom: 120px;
+	background-color: deepskyblue;
+	border-radius: 10px;
+	z-index: 10;
+}
+
+div#mainWindow {
+	margin-left: 10%;
+}
+
+/* @keyframes message {
+	0% {}
+	25% {left: 8%}
+	50% {left: 4%}
+	75% {left: 2%}
+	100% {left: 0}
+} */
+
+div#messageBox {
+	padding: 5px;
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: lightskyblue;
+	background-color: #000a;
+	border-radius: 10px;
+	z-index: 10;
+	/* animation: message 4s; */
+}
+
 div#bg {
 	background-size: auto;
 	border-radius: 10px 10px 10px 10px;
@@ -133,6 +168,13 @@ p#verText {
 p#tabText {
 	float: left;
 	margin: 0 -1px;
+}
+
+p#tips {
+	position: relative;
+	&:before {
+		content: "Tip: ";
+	}
 }
 
 form#qtail {}
@@ -163,43 +205,7 @@ input[type="checkbox"] {
 	}
 }
 
-/* 悬停提示 */
-/* [tooltip] {
-	bottom: calc(100% + 10px);
-	transform: translate(-50%, 0);
-	position: absolute;
-
-	&::after {
-		display: none;
-		content: attr(tooltip);
-		position: absolute;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		padding: 8px 15px;
-		max-width: 400px;
-		border-radius: 4px;
-		color: black;
-		background-color: deepskyblue;
-		box-shadow: 0 10px 20px -5px #0004;
-		z-index: 100;
-	}
-	&::before {
-		display: none;
-		position: absolute;
-		border: 5px solid transparent;
-		z-index: 100;
-	}
-
-	&:hover {
-		&::after {
-			display: block;
-		}
-		&::before {
-			display: block;
-		}
-	}
-}
+/* 旧的 rstr 模式美化样式,为了兼容性以保留
 input#rstr+label#rstr {
 	user-select: none;
 	margin-left: 32px;
@@ -227,7 +233,7 @@ input#rstr:checked+label#rstr {
 } */
 
 [tooltip]:hover {
-	&::after {
+	&:after {
 		position: absolute;
 		content: attr(tooltip);
 		display: block;
@@ -235,6 +241,21 @@ input#rstr:checked+label#rstr {
 		padding: 5px;
 		z-index: 10;
 		background-color: orange;
+		border-radius: 10px;
+		box-shadow: 0 10px 20px -5px #0004;
+	}
+}
+[subtooltip]:hover {
+	&:before {
+		margin-top: -40px;
+		position: absolute;
+		content: attr(subtooltip);
+		display: block;
+		font-size: 80%;
+		padding: 5px;
+		z-index: 10;
+		color: white;
+		background-color: red;
 		border-radius: 10px;
 		box-shadow: 0 10px 20px -5px #0004;
 	}
@@ -252,10 +273,18 @@ succBtn {
 	border-radius: 10px;
 }
 
+	@keyframes hover {
+		0% {
+			border: 1px dashed blue;
+		}
+		100% {
+			border: 1px solid blue;
+		}
+	}
 succBtn:hover {
 	margin: -1px;
-	border: 2px dashed blue;
-	background-color: yellow;
+	background-color: #ff0;
+	animation: hover 2s infinite;
 }
 
 tabBtn {
@@ -362,9 +391,9 @@ img#visitor-counter {
 		margin-top: -1%;
 		margin-left: -2px;
 	}
-	/*div.tabPnl {
-		margin-top: -1%;
-	}*/
+	div.qtailBox {
+		margin-top: -6px;
+	}
 	div.footerPnl {
 		width: 70%;
 		margin: 0 0;

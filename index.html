@@ -3,25 +3,23 @@
 	name: qtail homepage
 	author: XiaozhiSans
 	creative date: 2024/03/30
-	update date: 2024/04/20
+	update date: 2024/04/25
 -->
 
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="zh">
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="description" content="qq昵称小尾巴生成器">
-		<meta name="keywords" content="qq, qq昵称, qq昵称小尾巴, github, qtail, XiaozhiSans">
+		<meta name="keywords" content="qq, qq昵称, 昵称, 反转昵称, 反向昵称, 颠倒昵称, 特殊昵称, qq昵称小尾巴, github, qtail, XiaozhiSans">
 		<meta name="author" content="XiaozhiSans">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>qtail | qq昵称小尾巴生成器</title>
-		<link rel="shortcut icon" type="image/png" href="img/qtail.png">
+		<link rel="icon" type="image/png" href="img/qtail.png">
 		<!-- 提前载入的脚本和层叠样式表 -->
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<script type="text/javascript" src="js/qtail.js"></script>
-		<script type="text/javascript" src="js/qtail.html.js"></script>
-		<script type="text/javascript" src="js/page.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.5.1/dist/jquery.min.js"></script>
 		<!-- 对苹果设备以及 pwa 的支持 -->
 		<link rel="apple-touch-icon" href="img/qtail.png">
 		<meta name="apple-mobile-web-app-title" content="qtail">
@@ -41,6 +39,7 @@
 		</noscript>
 		<!-- end 没有脚本权限显示的内容 -->
 
+
 		<!-- 主窗口 -->
 		<div id="mainWindow">
 			<div class="tabPnl">
@@ -58,10 +57,10 @@
 				<p class="atext">互联网很美好，但你下载不了爱。<i> —— 游戏《破碎现实》</i></p>
 				<form id="qtail" action="" method="">
 					<div>
-						<label for="name" tooltip="(最大20字符)">*你的昵称</label>
+						<label for="name" tooltip="(必填,最大20字符)">* 你的昵称:</label>
 						<input type="text" id="name" name="name" required value="qtail" maxlength="20">
 					</div><div>
-						<label for="tail" tooltip="(最大70字符)">*你想要的小尾巴</label>
+						<label for="tail" tooltip="(必填,最大70字符)" subtooltip="*注意*:目前不支持全角符号/中文符号,请用半角符号/英文符号结尾.或者把全角符号/中文符号放在尾巴开头.">* 你想要的小尾巴:</label>
 						<input type="text" id="tail" name="tail" required value="喵~" maxlength="70">
 					</div> <!-- <br>
 					<div>
@@ -70,13 +69,13 @@
 					</div> -->
 				<succBtn onclick="qtailHtml.main();">生成</succBtn>
 				</form><br>
-				<img id="visitor-counter" src="https://count.getloli.com/get/@qtail?theme=rule34" alt="页面累计被访问次数" tooltip="页面累计被访问次数">
+				<img id="visitor-counter" src="https://count.getloli.com/get/@qtail?theme=rule34" alt="页面累计被访问次数" tooltip="页面累计被访问次数" onerror="this.src = 'img/visitor-counter-404.webp';">
 			</div>
 			<div class="resultBox">
 				<div>
-					<label for="result">这就是你的新昵称哒 ~(￣▽￣)~</label>
-					<copyBtn onclick="qtailHtml.copy();" tooltip="复制">📋</copyBtn>
-					<textarea id="result" readonly>(x_x) 还没有生成昵称呢,快去试试吧</textarea>
+					<label for="result" tooltip="点击以复制" onclick="qtailHtml.copy();">这就是你的新昵称哒 ~(￣▽￣)~</label>
+					<!-- <copyBtn onclick="qtailHtml.copy();" tooltip="复制">📋</copyBtn> -->
+					<textarea id="result" tooltip="点击以复制" onclick="qtailHtml.copy();" readonly>(x_x) 还没有生成昵称呢,快去试试吧</textarea>
 				</div>
 			</div>
 		</div>
@@ -89,14 +88,14 @@
 					<p id="tabText">底栏</p>
 					<div class="tabBtnPnl">
 						<tabBtn id="disabled"></tabBtn>
-						<tabBtn id="disabled"></tabBtn>
-						<tabBtn id="hide" onclick="page.hideFooter();" tooltip="隐藏">➖</tabBtn>
+						<tabBtn id="" tooltip="帮助" onclick="window.open('help/', '_blank');">❔</tabBtn>
+						<tabBtn class="hide" id="hide" onclick="page.hideBox('links');" tooltip="隐藏">➖</tabBtn>
 					</div>
 				</div>
-				<div class="footerPnl" id="footerPnl">
+				<div class="footerPnl" name="links">
 					<p>
 						<a href="https://github.com/XiaozhiSans/qtail">开放源代码</a> | <a href="#" onclick="page.changeBoxAlpha();">窗口透明度</a><br>
-						<a href="#" onclick="page.randBg();" tooltip="请期待下个版本（" id="disabled">随机桌面壁纸</a> | <a href="#" onclick="page.changeBg();">更改桌面壁纸</a><br>
+						<a href="https://github.com/XiaozhiSans/qtail/issues">提个建议</a> | <a href="#" onclick="page.changeBg();">更改桌面壁纸</a><br>
 						Copyright (c) 2024 <a href="https://github.com/XiaozhiSans">XiaozhiSans</a>
 					</p>
 				</div>
@@ -104,9 +103,16 @@
 		</footer>
 		<!-- end 底栏窗口 -->
 
-		<!-- 最后加载的脚本 -->
-		<script type="text/javascript">qtail.getVer();</script>
-		<!-- end 最后加载的脚本 -->
+		<div id="tipsBox">
+			<p id="tips">Loading...</p>
+		</div>
+		<div id="messageBox" style="">
+			<p id="message"></p>
+		</div>
+		<!-- 延迟加载的脚本 -->
+		<script type="text/javascript" src="js/qtail.loader.js"></script>
+		<script type="text/javascript" src="js/page.js"></script>
+		<!-- end 延迟加载的脚本 -->
 
 	</body>
 </html>

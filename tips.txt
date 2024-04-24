@@ -1,0 +1,13 @@
+不会用吗?快点击底栏的"❔"按钮吧!
+欢迎使用qtail!
+(∪.∪ )...zzz
+你知道吗?qtail一开始使用的是Python<br>作为开发语言
+Now Supported SBC Symbols!!
+undefined
+真的有人会看这些吗?
+用qtail这么久了,<a href="https://github.com/XiaozhiSans/qtail/issues">提个建议吧</a>
+反正你也不会看tips..我喜欢你
+<a onclick="qtailHtml.share();" style="border: none;">快叫上你的好友们一起来用qtail!</a>
+♪ 我在5:20睡觉 13:14准时起 ♪
+你知道吗?qtail page的css写的真的很烂..
+把鼠标指在/长按某些控件上<br>就会显示对应的提示哦

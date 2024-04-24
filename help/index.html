@@ -1,0 +1,163 @@
+<!doctype html><html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="qq昵称小尾巴生成器帮助页">
+	<meta name="keywords" content="qq, qq昵称, 昵称, 反转昵称, 反向昵称, 颠倒昵称, 特殊昵称, qq昵称小尾巴, github, qtail, XiaozhiSans">
+	<meta name="author" content="XiaozhiSans">
+	<title>qtail | 帮助文档</title>
+	<link rel="icon" type="image/png" href="../img/qtail.png">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<style type="text/css">
+		img {
+			border-radius: 10px;
+		}
+		details {
+			padding: 5px; color:white; background-color: #000c; border-radius: 10px;
+		}
+		div > h3 {
+			&:before {
+				content: "v ";
+			}
+		}
+		div > h3[hided="1"] {
+			&:before {
+				content: "> ";
+			}
+		}
+	</style>
+</head>
+<body>
+	<a name="top" style="border: none;"></a>
+
+	<div style="padding: 5px; position: fixed; z-index: 10;">
+		<details open>
+			<summary>目录</summary>
+			<ul>
+				<ul>
+					<li><a href="#top">顶部</a></li>
+					<ol>
+						<li><a href="#1">基操</a></li>
+						<li><a href="#2">优操</a></li>
+					</ol>
+					<li><a href="#faq">问答</a></li>
+					<li><a href="#about">关于</a></li>
+					<li><a href="#bottom">底部</a></li>
+				</ul>
+			</ul>
+		</details>
+	</div>
+	<div id="mainWindow">
+		<div class="tabPnl">
+			<p id="tabText">帮助</p>
+			<div class="tabBtnPnl">
+				<tabBtn id="disabled"></tabBtn>
+				<tabBtn id="disabled"></tabBtn>
+				<tabBtn class="hide" id="hide" onclick="window.close();" tooltip="关闭">❌</tabBtn>
+			</div>
+		</div>
+		<div class="qtailBox" style="border-radius: 0 0 10px 10px;">
+			<a name="1"><h3>基本操作</h3></a>
+			<img src="img/how2use.webp" title="演示图片" width="100%" onclick="pic.view(this);">
+			<ol>
+				<li>在输入框中输入你的昵称和想要的尾巴</li>
+				<li>点击生成按钮</li>
+				<li>点击复制按钮</li>
+				<details style="">
+					<summary>注意:</summary>
+					qtail.js v1.6.2 / qtail page v0425 以后的页面版本没有复制按钮<br>
+					直接点击结果框/按下F8即可复制
+				</details>
+				<li>进入qq修改昵称/群昵称</li>
+			</ol>
+			<div style="display: flex;">
+				<img src="img/changeQqName.webp" title="修改qq昵称" width="50%">
+				<img src="img/changeQqNameInGroup.webp" title="修改qq群昵称" width="50%" height="30%">
+			</div>
+			<p>---------------</p>
+			<a name="2"><h3>优雅操作</h3></a>
+			<ol>
+				<li> tab 开始输入/下一个输入框</li>
+				<li> shift + tab 返回上一个输入框</li>
+				<li> enter 生成昵称</li>
+				<li> f8 复制昵称</li>
+				<li> esc 关闭页面</li>
+			</ol>
+			<p>---------------</p>
+			<a name="faq"><h3>常见问答</h3></a>
+			<dl>
+				<dt>Q:我生成的昵称有问题怎么办?</dt>
+				<dd>- A:更换浏览器后重试,推荐使用这些浏览器:
+					<ul>
+						<li><a href="https://www.microsoft.com/zh-cn/edge/download?form=qtail">Microsoft Edge</a></li>
+						<li><a href="https://www.google.cn/chrome/">Google Chrome</a></li>
+						<li><a href="https://www.firefox.com.cn/download/">Mozilla Firefox</a></li>
+					</ul>
+					如果你有能力帮忙测试环境兼容性请联系
+					<details>
+						<summary>XiaozhiSans</summary>
+						<ul>
+							<li><a href="https://space.bilibili.com/1988506301">哔哩哔哩@XiaozhiSans</a></li>
+							<li><a href="https://qm.qq.com/cgi-bin/qm/qr?k=KKfdiq4HiNSB5qO5kMM2g6MJ5deWrh_u" tooltip="3276839942">加我qq</li>
+							<li><a href="mailto:xiaozhisans.qq.com">给我发邮件</a></li>
+							<li><a href="https://github.com/XiaozhiSans">GitHub@XiaozhiSans</a></li>
+						</ul>
+					</details>
+				</dd><br>
+				<dt>Q:我生成的昵称里尾巴的符号跑到昵称和尾巴中间去了?/生成的昵称尾巴符号不对?</dt>
+				<dd>- A:很抱歉,目前不支持结尾为中文符号/全角符号(以及unicode符号)的尾巴,你可以:
+					<ol>
+						<li>用英文符号/半角符号来代替</li>
+						<li>把结尾符号放到尾巴开头</li>
+					</ol>
+				</dd><br>
+				<dt>Q:我按你说的换成了英文符号结尾符号生成出来怎么变少了</dt>
+				<dd>- A:很抱歉,因为生成器目前是通过split()来去除结尾符号就会导致这种情况,你可以按照上述解决方法中的第二点来解决此问题</dd>
+			</dl>
+			<p>---------------</p>
+			<a name="about"><h3>关于</h3></a>
+			qtail 的诞生离不开这些项目:<br>
+			(排名不分前后)
+			<ul>
+				<li><a href="https://github.com/XiaozhiSans/qtail.js">qtail.js</a></li>
+				<li><a href="https://github.com/jquery/jquery">jQuery</a></li>
+				<li><a href="https://github.com/XiaozhiSans/qtailLoader">qtailLoader</a></li>
+			</ul>
+			<p>
+				qtail page v0425 | <qtail.js></qtail.js><br>
+				Copyright (c) 2024 <a href="https://github.com/XiaozhiSans">XiaozhiSans</a>
+			</p>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../js/qtail.js"></script>
+	<script type="text/javascript">
+		document.addEventListener("keydown", function(event) {
+			// 热键绑定
+			if (event.code == "Escape") {
+				window.close();
+			}
+		});
+
+		const cl = function(who, bool) {
+			let target = document.getElementById("cl");
+			if(bool == "false") {
+				target.style.display = "none";
+				who.setAttribute("onclick", "cl(this, 'true');");
+				who.setAttribute("hided", '1');
+			}
+			else {
+				target.style.display = '';
+				who.setAttribute("onclick", "cl(this, 'false');");
+				who.setAttribute("hided", '');
+			}
+		}
+
+		document.getElementsByTagName("qtail.js")[0].innerHTML = (qtail.appName + ' ' + qtail.version + ' ' + qtail.buildType);
+	</script>
+
+
+	<a name="bottom" style="border: none;"></a>
+
+</body>
+</html>

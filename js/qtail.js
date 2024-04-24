@@ -1,16 +1,14 @@
 const qtail = {
 	appName: "qtail.js",
 	appNameShort: "qtail",
-	version: "v1.6.1",
-	versionCode: 16120240420,
-	buildVer: "(20240420)",
+	version: "v1.6.2",
+	versionCode: 16120240424,
+	buildVer: "(20240424)",
 	buildType: "Stable",
 	license: "MIT License",
 	author: "XiaozhiSans",
 	url: "https://github.com/XiaozhiSans/qtail",
 	getVer: function() {
-		const verText = document.getElementById("verText");
-		verText.innerHTML = ("Running <a href=\"https://github.com/XiaozhiSans/qtail\">qtail.js</a> " + qtail.buildType + ' ' + qtail.version);
 		console.log("qtail.js version: " + qtail.buildType + ' ' + qtail.version + qtail.buildVer);
 		return qtail.version;
 	},
