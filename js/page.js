@@ -11,8 +11,8 @@ const page = {
 	appName: "",
 	appNameShort: "",
 	version: "v1.0.1",
-	versionCode: 10020240424,
-	buildVer: "(20240424)",
+	versionCode: 10020240425,
+	buildVer: "(20240425)",
 	buildType: "",
 	license: "",
 	author: "XiaozhiSans",
@@ -109,7 +109,7 @@ const page = {
 }
 
 $.get("tips.txt", function(data) {
-	globalThis.tips = data.split('\r\n');
+	globalThis.tips = data.split('\n');
 	document.getElementById("tips").innerHTML = tips[Math.floor(Math.random()*(tips.length - 1))];
 });
 setInterval(function() {
