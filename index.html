@@ -53,7 +53,6 @@
 			</div>
 			<div class="qtailBox">
 				<p id="verText">Loading...</p>
-				<!-- [一言] <p id="sentence">:D 一言获取中...</p> -->
 				<p class="atext">互联网很美好，但你下载不了爱。<i> —— 游戏《破碎现实》</i></p>
 				<form id="qtail" action="" method="">
 					<div>
@@ -69,13 +68,13 @@
 					</div> -->
 				<succBtn onclick="qtailHtml.main();">生成</succBtn>
 				</form><br>
-				<img id="visitor-counter" src="https://count.getloli.com/get/@qtail?theme=rule34" alt="页面累计被访问次数" tooltip="页面累计被访问次数" onerror="this.src = 'img/visitor-counter-404.webp';">
+				<img id="visitor-counter" src="https://count.getloli.com/get/@qtail?theme=rule34" title="页面累计被访问次数" onerror="this.src = 'img/visitor-counter-404.webp';">
 			</div>
 			<div class="resultBox">
 				<div>
 					<label for="result" tooltip="点击以复制" onclick="qtailHtml.copy();">这就是你的新昵称哒 ~(￣▽￣)~</label>
 					<!-- <copyBtn onclick="qtailHtml.copy();" tooltip="复制">📋</copyBtn> -->
-					<textarea id="result" tooltip="点击以复制" onclick="qtailHtml.copy();" readonly>(x_x) 还没有生成昵称呢,快去试试吧</textarea>
+					<textarea id="result" title="点击以复制" onclick="qtailHtml.copy();" readonly>(x_x) 还没有生成昵称呢,快去试试吧</textarea>
 				</div>
 			</div>
 		</div>
