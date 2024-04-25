@@ -27,7 +27,7 @@ const qL = {
 	},
 	startLoad: function() {
 		$.get("ql.ini", function(data) {
-			let lines = data.split('\n').join('').split('\r');
+			let lines = data.split('\n');
 			for(let line of lines) {
 				if(line.startsWith("==")) {
 					console.log(line);
