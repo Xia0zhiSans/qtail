@@ -1,23 +1,19 @@
 console.log("page.js has been loaded.")
-const msg = function(msg, time) {
-	qtailHtml.message(msg, time);
-}
 
-setTimeout(function() {
-	document.getElementById("verText").innerHTML = ("Running <a href=\"https://github.com/XiaozhiSans/qtail.js\">qtail.js</a> " + qtail.buildType + ' ' + qtail.version);
-}, 3500);
+setTimeout(() => {
+	document.getElementById("verText").innerHTML = ("Running <a class=\"github outlink\" href=\"https://github.com/XiaozhiSans/qtail.js\">qtail.js</a> " + qtail.buildType + ' ' + qtail.version);
+}, 2500);
 
 const page = {
 	appName: "",
 	appNameShort: "",
 	version: "v1.0.1",
-	versionCode: 10020240425,
 	buildVer: "(20240425)",
 	buildType: "",
 	license: "",
 	author: "XiaozhiSans",
 	url: "",
-	changeBg: function() {
+	changeBg: () => {
 		var bgUrl = prompt("请输入图片url：", "https://eg.web/imgs/img0.jpg");
 		if((bgUrl != null)&&(bgUrl != "")) {
 			document.getElementById("body").style.backgroundImage = bgUrl;
@@ -30,7 +26,7 @@ const page = {
 		msg("更改成功 (￣﹃￣)", 3);
 		return 0;
 	},
-	changeBoxAlpha: function() {
+	changeBoxAlpha: () => {
 		var alpha = prompt("请输入透明度（0 ~ 1.0）：", "1.0");
 		if((alpha > 1.0)||(alpha < 0.0)||(alpha == NaN)) {
 			msg("更改失败 Σ(っ °Д °;)っ<br>无效的数值。", 3);
@@ -46,7 +42,7 @@ const page = {
 		msg("更改成功 (￣﹃￣)", 3);
 		return 0;
 	},/*
-	changeBoxBg: function() {
+	changeBoxBg: () => {
 		const box = document.getElementById("bg");
 		var bgUrl = prompt("请输入图片url：", "https://eg.web/imgs/img0.jpg");
 		if((bgUrl != null)&&(bgUrl != "")) {
@@ -56,62 +52,40 @@ const page = {
 		alert("更改成功 (￣﹃￣)");
 		return 0;
 	},*/
-		/* 不必理会以下两个函数的控制台报错,以免改的石山崩塌( */
-	hideBox: function(name) {
-		const footers = document.getElementsByClassName("footerPnl");
-		const hideBtns = document.getElementsByClassName("hide");
-		for (footer in footers) {
-			if (footers[footer].getAttribute("name") == name) {
-				footers[footer].style.display = "none";
-				hideBtns[footer].setAttribute("onclick", "page.displayBox('" + name + "');");
-				hideBtns[footer].setAttribute("tooltip", "显示")
-				hideBtns[footer].innerHTML = "➕";
-			}
-		}
-		return 0;
+	hideBox: () => {
+		let footer = document.querySelector("div.footerPnl");
+		let hideBtn = document.getElementById("hide");
+		footer.style.display = "none";
+		hideBtn.setAttribute("tooltip", "展开"),
+		hideBtn.setAttribute("onclick", "page.displayBox();");
+		hideBtn.innerHTML = "<img title=\"展开\" class=\"svg\" src=\"../img/plus-solid.svg\">";
+		return;
 	},
-	displayBox: function(name) {
-		const footers = document.getElementsByClassName("footerPnl");
-		const hideBtns = document.getElementsByClassName("hide");
-		for (footer in footers) {
-			if (footers[footer].getAttribute("name") == name) {
-				footers[footer].style.display = 'block';
-				hideBtns[footer].setAttribute("onclick", "page.hideBox('" + name + "');");
-				hideBtns[footer].setAttribute("tooltip", "隐藏");
-				hideBtns[footer].innerHTML = "➖";
-			}
-		}
-		return 0;
+	displayBox: () => {
+		let footer = document.querySelector("div.footerPnl");
+		let hideBtn = document.getElementById("hide");
+		footer.style.display = "block";
+		hideBtn.setAttribute("onclick", "page.hideBox();");
+		hideBtn.setAttribute("tooltip", "收起");
+		hideBtn.innerHTML = "<img title=\"收起\" class=\"svg\" src=\"../img/minus-solid.svg\">";
+		return;
 	}
-	/* 不要管↑ */
 	/*,
-	sentence: function() {
+	sentence: () => {
 		
 	},
-	randBg: function() {
-		const url = "https://s21.ax1x.com/";
-		if (device.mobile()){
-			const bgList = [
-				"2024/04/18/pFzwE79.jpg"
-			]
-		}
-		else {
-			const bgList = [
-				"2024/04/18/pFzwQXD.jpg",
-				"2024/04/18/pFzwmfx.jpg",
-				"2024/04/18/pFzwE79.jpg",
-				"2024/04/18/pFzwZkR.jpg",
-				"2024/04/18/pFzwup6.jpg"
-			]
-		}
+	randBg: () => {
 		document.getElementById("customBg").style.background = bgUrl + bgList[Math.floor(Math.random() * 6)];
 	}*/
 }
-
-$.get("tips.txt", function(data) {
+let tip = document.getElementById("tips");
+$.get("../tips.txt", data => {
 	globalThis.tips = data.split('\n');
-	document.getElementById("tips").innerHTML = tips[Math.floor(Math.random()*(tips.length - 1))];
+	tip.innerHTML = tips[Math.floor(Math.random() * (tips.length - 1))];
 });
-setInterval(function() {
-	document.getElementById("tips").innerHTML = tips[Math.floor(Math.random()*(tips.length - 1))];
-}, 10000);
+setInterval(() => {
+	tip.innerHTML = tips[Math.floor(Math.random() * (tips.length - 1))];
+}, 30000);
+
+const msg = qtailHtml.meassage;
+icpCheck(1);

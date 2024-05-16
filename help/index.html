@@ -1,12 +1,16 @@
 <!doctype html><html lang="zh">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=0.75">
 	<meta name="description" content="qq昵称小尾巴生成器帮助页">
 	<meta name="keywords" content="qq, qq昵称, 昵称, 反转昵称, 反向昵称, 颠倒昵称, 特殊昵称, qq昵称小尾巴, github, qtail, XiaozhiSans">
 	<meta name="author" content="XiaozhiSans">
 	<title>qtail | 帮助文档</title>
-	<link rel="icon" type="image/png" href="../img/qtail.png">
+	<!--
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.7.1/dist/jquery.min.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" defer></script>
+	-->
+	<link rel="fav icon" type="image/ico" href="../favicon.ico">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<style type="text/css">
 		img {
@@ -15,37 +19,49 @@
 		details {
 			padding: 5px; color:white; background-color: #000c; border-radius: 10px;
 		}
-		div > h3 {
-			&:before {
-				content: "v ";
-			}
+		div#cata {
+			background-color: #0004;
+			border-radius: 10px;
+			max-height: 64px;
+			transition: all 2s;
+			user-select: none;padding: 5px; position: fixed; z-index: 10;
+			top: 0;
+			right: calc(-8vw);
 		}
-		div > h3[hided="1"] {
-			&:before {
-				content: "> ";
-			}
+		div#cata>ul {
+			opacity: 0;
+			transition: opacity 1.2s;
+			pointer-events: none;
+		}
+		div#cata:hover {
+			right: 10px;
+			max-height: 1000px;
+		}
+		div#cata:hover>ul {
+			opacity: 1;
+			pointer-events: unset;
 		}
 	</style>
 </head>
 <body>
-	<a name="top" style="border: none;"></a>
+	<p id="top"></p>
 
-	<div style="padding: 5px; position: fixed; z-index: 10;">
-		<details open>
-			<summary>目录</summary>
+	<div id="cata">
+		<h4>目录</h4>
+		<ul>
 			<ul>
-				<ul>
-					<li><a href="#top">顶部</a></li>
+				<li><a href="#top">顶部</a></li>
+				<li><a href="#1">操作</a>
 					<ol>
-						<li><a href="#1">基操</a></li>
-						<li><a href="#2">优操</a></li>
+						<li><a href="#1">基本</a></li>
+						<li><a href="#2">高级</a></li>
 					</ol>
-					<li><a href="#faq">问答</a></li>
-					<li><a href="#about">关于</a></li>
-					<li><a href="#bottom">底部</a></li>
-				</ul>
+				</li>
+				<li><a href="#faq">问答</a></li>
+				<li><a href="#about">关于</a></li>
+				<li><a href="#bottom">底部</a></li>
 			</ul>
-		</details>
+		</ul>
 	</div>
 	<div id="mainWindow">
 		<div class="tabPnl">
@@ -57,25 +73,29 @@
 			</div>
 		</div>
 		<div class="qtailBox" style="border-radius: 0 0 10px 10px;">
-			<a name="1"><h3>基本操作</h3></a>
-			<img src="img/how2use.webp" title="演示图片" width="100%" onclick="pic.view(this);">
+			<h3 id="1">基本操作</h3>
+			<a href="img/how2use.webp" data-fancybox data-caption="演示图片">
+				<img src="img/how2use.webp" title="演示图片" width="100%">
+			</a>
 			<ol>
 				<li>在输入框中输入你的昵称和想要的尾巴</li>
 				<li>点击生成按钮</li>
 				<li>点击复制按钮</li>
-				<details style="">
-					<summary>注意:</summary>
-					qtail.js v1.6.2 / qtail page v0425 以后的页面版本没有复制按钮<br>
+				<details>
+					<summary>对于 <code>qtail page v0425 / qtail.js v1.6.2</code> 以后的版本</summary>
 					直接点击结果框/按下F8即可复制
 				</details>
 				<li>进入qq修改昵称/群昵称</li>
 			</ol>
-			<div style="display: flex;">
-				<img src="img/changeQqName.webp" title="修改qq昵称" width="50%">
-				<img src="img/changeQqNameInGroup.webp" title="修改qq群昵称" width="50%" height="30%">
+			<div style="display: flex; justify-content: center;">
+				<a href="img/changeQqName.webp" data-fancybox data-caption="修改qq昵称" width="50%">
+					<img src="img/changeQqName.webp" title="修改qq昵称">
+				</a><a href="img/changeQqNameInGroup.webp" data-fancybox data-caption="修改qq群昵称" width="50%">
+				<img src="img/changeQqNameInGroup.webp" title="修改qq群昵称" height="30%" style="margin-top: 90%; margin-left: 5%;">
+				</a>
 			</div>
 			<p>---------------</p>
-			<a name="2"><h3>优雅操作</h3></a>
+			<h3 id="2">优雅操作</h3>
 			<ol>
 				<li> tab 开始输入/下一个输入框</li>
 				<li> shift + tab 返回上一个输入框</li>
@@ -84,15 +104,15 @@
 				<li> esc 关闭页面</li>
 			</ol>
 			<p>---------------</p>
-			<a name="faq"><h3>常见问答</h3></a>
+			<h3 id="faq">常见问答</h3>
 			<dl>
 				<dt>Q:我生成的昵称有问题怎么办?</dt>
 				<dd>- A:更换浏览器后重试,推荐使用这些浏览器:
 					<ul>
-						<li><a href="https://www.microsoft.com/zh-cn/edge/download?form=qtail">Microsoft Edge</a></li>
-						<li><a href="https://www.google.cn/chrome/">Google Chrome</a></li>
-						<li><a href="https://www.firefox.com.cn/download/">Mozilla Firefox</a></li>
-					</ul>
+						<li><a class="edge outlink" href="https://www.microsoft.com/zh-cn/edge/download?form=qtail">Microsoft Edge</a></li>
+						<li><a class="chrome outlink" href="https://www.google.cn/chrome/">Google Chrome</a></li>
+						<li><a class="firefox outlink" href="https://www.firefox.com.cn/download/">Mozilla Firefox</a></li>
+					</ul><!--
 					如果你有能力帮忙测试环境兼容性请联系
 					<details>
 						<summary>XiaozhiSans</summary>
@@ -112,20 +132,24 @@
 					</ol>
 				</dd><br>
 				<dt>Q:我按你说的换成了英文符号结尾符号生成出来怎么变少了</dt>
-				<dd>- A:很抱歉,因为生成器目前是通过split()来去除结尾符号就会导致这种情况,你可以按照上述解决方法中的第二点来解决此问题</dd>
+				<dd>- A:很抱歉,因为生成器目前是通过split()来去除结尾符号就会导致这种情况,你可以按照上述解决方法中的第二点来解决此问题</dd>-->
 			</dl>
 			<p>---------------</p>
-			<a name="about"><h3>关于</h3></a>
-			qtail 的诞生离不开这些项目:<br>
+			<h3 id="about">关于</h3>
+			感谢<br>
 			(排名不分前后)
 			<ul>
-				<li><a href="https://github.com/XiaozhiSans/qtail.js">qtail.js</a></li>
-				<li><a href="https://github.com/jquery/jquery">jQuery</a></li>
-				<li><a href="https://github.com/XiaozhiSans/qtailLoader">qtailLoader</a></li>
+				<li>提供存储: <a class="github outlink" href="https://github.com">GitHub</a></li>
+				<li>核心代码: <a class="github outlink" href="https://github.com/XiaozhiSans/qtail.js">qtail.js</a></li>
+				<li>qL辅助代码: <a class="github outlink" href="https://github.com/jquery/jquery">jQuery</a></li>
+				<li>图标提供: <a class="github outlink" href="https://github.com/FortAwesome/Font-Awesome/">Font-Awesome</a></li>
+				<li>模块化加载: <a class="github outlink" href="https://github.com/XiaozhiSans/qtailLoader">qtailLoader</a></li>
+				<li>qt图标设计: <a class="outlink" href="https://www.logosc.cn/">标小智</a></li>
+				<li>以及参与 beta 测试的<a>你</a>!</li>
 			</ul>
 			<p>
-				qtail page v0425 | <qtail.js></qtail.js><br>
-				Copyright (c) 2024 <a href="https://github.com/XiaozhiSans">XiaozhiSans</a>
+				qtail page v0516 | <qtail.js></qtail.js> | 更新于 2024年5月16日 21点33分<br>
+				Copyright (c) 2024 <a class="github outlink href="https://github.com/XiaozhiSans">XiaozhiSans</a>
 			</p>
 		</div>
 	</div>
@@ -139,25 +163,11 @@
 			}
 		});
 
-		const cl = function(who, bool) {
-			let target = document.getElementById("cl");
-			if(bool == "false") {
-				target.style.display = "none";
-				who.setAttribute("onclick", "cl(this, 'true');");
-				who.setAttribute("hided", '1');
-			}
-			else {
-				target.style.display = '';
-				who.setAttribute("onclick", "cl(this, 'false');");
-				who.setAttribute("hided", '');
-			}
-		}
-
 		document.getElementsByTagName("qtail.js")[0].innerHTML = (qtail.appName + ' ' + qtail.version + ' ' + qtail.buildType);
 	</script>
 
 
-	<a name="bottom" style="border: none;"></a>
+	<p id="bottom"></p>
 
 </body>
 </html>

@@ -1,11 +1,10 @@
 const qtail = {
 	appName: "qtail.js",
 	appNameShort: "qtail",
-	version: "v1.6.2",
-	versionCode: 16120240424,
-	buildVer: "(20240424)",
-	buildType: "Stable",
-	license: "MIT License",
+	version: "v1.7.0",
+	buildVer: "(20240516)",
+	buildType: "Beta",
+	license: "MIT",
 	author: "XiaozhiSans",
 	url: "https://github.com/XiaozhiSans/qtail",
 	getVer: function() {
@@ -14,38 +13,46 @@ const qtail = {
 	},
 	generation: function(name, tail) {
 		console.log("正在生成新的昵称 (￣﹃￣)");
-		tail = qtail.rstr(tail);
+		// tail = qtail.rstr(tail);
+		tail = this.retail(tail);
 		console.log("尾巴重整完毕 (￣﹃￣) 结果为: " + tail);
-		var result = name + String.fromCharCode(8295) + tail + String.fromCharCode(8294);
+		let result = name + String.fromCharCode(8295) + tail + String.fromCharCode(8294);
 
 		console.log("新昵称生成完毕 (￣﹃￣) 结果为: " + result);
 
 		return result;
 	},
+	retail: tail => {
+		let symbols = tail.replace(/[\u4e00-\u9fa5]|[\u4e00-\u9fa5]|[a-zA-Z]|[0-9]/g, '');
+		if(!symbols && symbols == '') {return tail;}
+		let name = eval(`tail.replace(/${symbols}/g, '');`);
+		let result = symbols + name;
+		return result;
+	},
 	rstr: function(str) {
-		for (var i = 33; i <= 47; i++) { // ! - /
-			var symbol = String.fromCharCode(i);
+		for (let i = 33; i <= 47; i++) { // ! - /
+			let symbol = String.fromCharCode(i);
 			if (str.endsWith(symbol)) {
 				str = symbol + str.split(symbol).join("");
 				return str;
 			}
 		}
-		for (var i = 58; i <= 65; i++) { // : - @
-			var symbol = String.fromCharCode(i);
+		for (let i = 58; i <= 65; i++) { // : - @
+			let symbol = String.fromCharCode(i);
 			if (str.endsWith(symbol)) {
 				str = symbol + str.split(symbol).join("");
 				return str;
 			}
 		}
-		for (var i = 91; i <= 96; i++) { // [ - `
-			var symbol = String.fromCharCode(i);
+		for (let i = 91; i <= 96; i++) { // [ - `
+			let symbol = String.fromCharCode(i);
 			if (str.endsWith(symbol)) {
 				str = symbol + str.split(symbol).join("");
 				return str;
 			}
 		}
-		for (var i = 123; i <= 191; i++) { // { - ¿
-			var symbol = String.fromCharCode(i);
+		for (let i = 123; i <= 191; i++) { // { - ¿
+			let symbol = String.fromCharCode(i);
 			if (str.endsWith(symbol)) {
 				str = symbol + str.split(symbol).join("");
 				return str;
@@ -58,12 +65,8 @@ const qtail = {
 
 console.log(
 	"\n" +
-		" %c " + qtail.appName + ' ' + qtail.version + " by " + qtail.author  +
-		" %c License: " + qtail.license +
-		" %c " + qtail.url +
+		" %c " + qtail.appName + ' ' + qtail.version + ' ' + qtail.buildType + " by " + qtail.author  +
 		"\n" +
 	"\n",
-	"color: #fff; background: #fd79a8; padding: 5px 0;",
-	"color: black; background-color: #999; padding: 5px 0;",
-	"background: #FFF; padding: 5px 0;"
+	"color: #fff; background: #fd79a8; padding: 5px 0;"
 );

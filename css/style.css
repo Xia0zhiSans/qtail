@@ -8,21 +8,49 @@
 
 /* 石山css,不要乱改,很可能牵一发动全身 (￣▽￣)" */
 
+* {
+	transition: all 2s;
+}
+
 a {
-	color: blue;
+	color: rgb(190, 13, 175);
 	text-decoration: none;
-	border: 1px dashed blue;
-	border-radius: 10px;
+	/* border: 1px dashed blue;
+	border-radius: 10px; */
+}
+a.chrome::before {
+	display: inline-block;
+	content: url(../img/chrome.svg);
+	width: 1em;
+}
+a.edge::before {
+	display: inline-block;
+	content: url(../img/edge.svg);
+	width: 1em;
+}
+a.firefox::before {
+	display: inline-block;
+	content: url(../img/firefox-browser.svg);
+	width: 1em;
+}
+a.github::before {
+	display: inline-block;
+	content: url(../img/github.svg);
+	width: 1em;
+}
+a.outlink::after {
+	display: inline-block;
+	content: url(../img/outlink.svg);
+	width: 1em;
 }
 a:hover {
-	/* border: 1px solid blue; */
-	animation: hover 2s infinite;
+	text-decoration: underline;
 }
 body {
-	color: black;
+	color: white !important;
 	background-color: deeppink;
 	background-repeat: no-repeat;
-	font-family: "微软雅黑", "Microsoft Yahei";
+	font-family: "微软雅黑", "Microsoft Yahei UI", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 h1.title,
@@ -82,10 +110,11 @@ div.footerBox {
 div.footerPnl {
 	width: 59.5%;
 	padding: 10px;
-	margin: -100px, 0;
+	margin-top: -100px;
 	text-align: center;
 	background-color: #00aaff99;
 	border-radius: 0 0 10px 10px;
+	font-family: "Microsoft Yahei UI";
 }
 
 div.tabPnl {
@@ -111,9 +140,9 @@ div.tabPnl#footerTabFix {
 div#tipsBox {
 	padding: 5px;
 	position: fixed;
-	bottom: 0;
-	margin-bottom: 120px;
-	background-color: deepskyblue;
+	top: calc(55vh);
+	right: 0;
+	background-color: rgb(122, 122, 5);
 	border-radius: 10px;
 	z-index: 10;
 }
@@ -133,13 +162,36 @@ div#mainWindow {
 div#messageBox {
 	padding: 5px;
 	position: fixed;
-	top: 0;
-	right: 0;
+	top: calc(45vh);
+	right: calc(-100vw);
 	color: lightskyblue;
 	background-color: #000a;
 	border-radius: 10px;
 	z-index: 10;
 	/* animation: message 4s; */
+	transition: right 0.8s ease-in-out;
+}
+div#messageBox[show] {
+	right: 0;
+}
+span#messageTime {
+	display: grid;
+	width: 100%;
+	height: 8px;
+}
+span#messageTime>span#bg {
+	background-color: white;
+	width: 100%;
+}
+span#messageTime>span#fg {
+	background-color: deeppink;
+	max-width: 0;
+	transition: max-width 1.8s;
+}
+span#messageTime>span#bg, span#messageTime>span#fg {
+	grid-area: 1/1/1/1;
+	height: 100%;
+	border-radius: 10px;
 }
 
 div#bg {
@@ -232,65 +284,54 @@ input#rstr:checked+label#rstr {
 	}
 } */
 
-[tooltip]:hover {
-	&:after {
-		position: absolute;
-		content: attr(tooltip);
-		display: block;
-		font-size: 80%;
-		padding: 5px;
-		z-index: 10;
-		background-color: orange;
-		border-radius: 10px;
-		box-shadow: 0 10px 20px -5px #0004;
-	}
+[tooltip]:hover::after  {
+	position: absolute;
+	content: attr(tooltip);
+	display: block;
+	font-size: 80%;
+	padding: 5px;
+	z-index: 10;
+	background-color: orange;
+	border-radius: 10px;
+	box-shadow: 0 10px 20px -5px #0004;
 }
-[subtooltip]:hover {
-	&:before {
-		margin-top: -40px;
-		position: absolute;
-		content: attr(subtooltip);
-		display: block;
-		font-size: 80%;
-		padding: 5px;
-		z-index: 10;
-		color: white;
-		background-color: red;
-		border-radius: 10px;
-		box-shadow: 0 10px 20px -5px #0004;
-	}
+[subtooltip]:hover::before {
+	margin-top: -2em;
+	position: absolute;
+	content: attr(subtooltip);
+	display: block;
+	font-size: 80%;
+	padding: 5px;
+	z-index: 10;
+	color: white;
+	background-color: red;
+	border-radius: 10px;
+	box-shadow: 0 10px 20px -5px #0004;
 }
 
 succBtn {
-	width: 15%;
+	width: 12%;
 	padding: 7px;
 	cursor: pointer;
-	font-size: 125%;
+	font-size: 110%;
 	user-select: none;
 	position: absolute;
 	text-align: center;
+	color: black;
 	background-color: #ffff99;
 	border-radius: 10px;
 }
 
-	@keyframes hover {
-		0% {
-			border: 1px dashed blue;
-		}
-		100% {
-			border: 1px solid blue;
-		}
-	}
 succBtn:hover {
-	margin: -1px;
+	/* margin: -1px; */
 	background-color: #ff0;
-	animation: hover 2s infinite;
 }
 
 tabBtn {
 	padding: 4px;
 	cursor: pointer;
-	border-radius: 10% 10% 10% 10%;
+	border-radius: 10%;
+	transition: background-color 0.8s;
 }
 tabBtn.share:hover {
 	background-color: orange;
@@ -316,13 +357,16 @@ copyBtn {
 	cursor: pointer;
 	user-select: none;
 	position: absolute;
-	border-radius: 10% 10% 10% 10%;
+	border-radius: 10%;
 }
 
 copyBtn:hover {
 	border: 1px solid yellow;
 }
 
+img.svg {
+	width: 18.05px;
+}
 img#visitor-counter {
 	width: 315px;
 	height: 100px;
@@ -330,7 +374,7 @@ img#visitor-counter {
 }
 
 /* 屏幕宽度适配缩放 */
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 1000px) {
 	/* desktop */
 	div.qtailBox,
 	div.resultBox,
@@ -356,7 +400,7 @@ img#visitor-counter {
 	body {
 		background-size: auto 200%;
 		/* 桌面端默认桌面壁纸 */
-		background-image: url("https://cdn.jsdelivr.net/gh/XiaozhiSans/imgbed@2024-04-20-01/XiaozhiSans/background.jpg");
+		background-image: url("https://cdn.jsdelivr.net/gh/XiaozhiSans/-/XiaozhiSans/background.jpg");
 	}
 
 	copyBtn {
@@ -364,12 +408,12 @@ img#visitor-counter {
 	}
 
 	succBtn {
-		width: 6%;
-		margin: 0 88%;
+		/* width: 6%; */
+		margin: 0 78%;
 	}
-	succBtn:hover {
+	/* succBtn:hover {
 		margin: 1px 88%;
-	}
+	} */
 
 	.btnPnl {
 		width: 100%;
@@ -382,7 +426,7 @@ img#visitor-counter {
 	body {
 		background-size: auto 125%;
 		/* 移动端默认桌面壁纸 */
-		background-image: url("https://cdn.jsdelivr.net/gh/XiaozhiSans/imgbed@2024-04-20-01/XiaozhiSans/115323172_p0.png");
+		background-image: url("https://cdn.jsdelivr.net/gh/XiaozhiSans/-/XiaozhiSans/115323172_p0.png");
 	}
 	div.qtailBox,
 	div.resultBox,
