@@ -5,8 +5,8 @@
 有一个人前来生成昵称
 undefined
 真的有人会看这些吗?
-用qtail这么久了,<a href="https://github.com/XiaozhiSans/qtail/issues">提个建议吧</a>
-<a onclick="qtailHtml.share();" href="#">快叫上你的好友们一起来用qtail!</a>
+用qtail这么久了,<a class="github outlink" href="https://github.com/XiaozhiSans/qtail/issues">提个建议吧</a>
+<a onclick="qtailHtml.share();" href="#share">快叫上你的好友们一起来用qtail!</a>
 你知道吗?qtail page的css写的真的很烂..
 把鼠标指在/长按某些控件上<br>就会显示对应的提示哦
 啊,要给你看什么tips好呢(翻
@@ -39,3 +39,11 @@ undefined
 bomb has been planted.
 有时候我真想一死了之,可一旦我想到我<br>已经是死过一次的人了就放弃了这个念头
 光总有消失的时候,但总有人会为你点灯
+所以说啊,年轻真是好啊
+谁言寸草心,报得三春晖
+哒哒哒
+yee~
+转圈圈咯
+B站关注<a href="https://space.bilibili.com/1988506301">@XiaozhiSans</a>,谢谢喵
+我愿把双眼化作灯塔,照亮你们伟大的前程
+OMG, It's qtail!

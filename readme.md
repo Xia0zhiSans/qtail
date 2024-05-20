@@ -17,7 +17,7 @@ cd qtail
 ### qtail的诞生离不开这些项目
 (排名不分前后)  
 - [qtail.js](https://github.com/XiaozhiSans/qtail.js)  
-  版本:v1.6.3 beta
+  版本:v1.7.0 stable
 
   协议:MIT
 
@@ -29,7 +29,7 @@ cd qtail
 
 - [qtailLoader](https://github.com/XiaozhiSans/qtailLoader)
 
-  版本:v1.0.1 alpha-lite
+  版本:v1.1.0 stable
 
   协议:MIT
 

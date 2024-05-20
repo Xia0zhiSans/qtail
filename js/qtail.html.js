@@ -1,47 +1,47 @@
 // 热键绑定
 document.addEventListener("keydown", event => {
 	(event.code == "Enter")? function() {
-		qtailHtml.main();
+		qtail.html.main();
 	}():
 	(event.code == "Escape")? function() {
-		qtailHtml.exit();
+		qtail.html.exit();
 	}():
 	(event.key == "F8")? function() {
-		qtailHtml.copy();
+		qtail.html.copy();
 	}(): function() {
 		return;
 	}();
 });
 
-const qtailHtml = {
+qtail.html = {
 	appName: "qtail.js html module",
 	appNameShort: "qtail-html-module",
 	version: "v1.0.1",
 	buildVer: "(20240420)",
-	buildType: "Alpha-Stable",
+	buildType: "Stable",
 	license: "MIT",
 	author: "XiaozhiSans",
 	url: "",
 	main: () => {
-		console.log("开始生成新昵称 (￣﹃￣)");
-		console.log("获取表单内容 (￣﹃￣)");
+		console.log(`[${qtail.html.appName}] 开始生成新昵称 (￣﹃￣)`);
+		console.log(`[${qtail.html.appName}] 获取表单内容 (￣﹃￣)`);
 		const qtailForm = document.querySelector("#qtail");
 		const qtailData = new FormData(qtailForm);
 
 		let name = qtailData.get("name");
 		let tail = qtailData.get("tail");
 		if (name == "" || tail == "") {
-			qtailHtml.message("生成已取消 (￣﹃￣)<br>昵称或尾巴不能为空.", 3);
-			console.error("qtail.js: on main, error code: -1");
+			qtail.html.message("生成已取消 (￣﹃￣)<br>昵称或尾巴不能为空");
+			console.error(`[${qtail.html.appName}] 生成已取消 (￣﹃￣): 昵称或尾巴不能为空`);
 			return -1;
 		}
-		console.log("获取到昵称：" + name + " 获取到尾巴：" + tail);
+		console.log(`[${qtail.html.appName}] 获取到昵称：${name} 获取到尾巴：${tail}`);
 		
 		let result = qtail.generation(name, tail);
 
-		console.log("将结果返回页面 (￣﹃￣)");
+		console.log(`[${qtail.html.appName}] 将结果返回页面 (￣﹃￣)`);
 		document.getElementById("result").innerHTML = result;
-		qtailHtml.message("生成完毕 (￣﹃￣)", 3);
+		qtail.html.message("生成完毕 (￣﹃￣)");
 	},
 	message: (content, time) => {
 		let target = document.getElementById("message"), box = document.querySelector("#messageBox");
@@ -53,7 +53,7 @@ const qtailHtml = {
 		let value = 100;
 		$("span#fg").cssText = ("max-width", `${value}%`);
 		setInterval(() => {
-			value >= 0? value -= 33: function() {return;}();
+			value >= 0? value -= 33: (() => {return;})();
 			$("span#fg").cssText = ("max-width", `${value}%`);
 		}, 1000);
 	},
@@ -61,15 +61,15 @@ const qtailHtml = {
 		const result = document.querySelector("#result");
 		result.select();
 		document.execCommand("copy");
-		qtailHtml.message("复制成功 (￣﹃￣)<br>快去 qq 试试吧", 3);
+		qtail.html.message("复制成功 (￣﹃￣)<br>快去 qq 试试吧");
 		return 0;
 	},
 	share: () => {
-		(!navigator.share)? function() {qtailHtml.message("您的浏览器不支持分享功能！ (￣﹃￣)", 3); return -1;}() :
-		function() {navigator.share({title: location.title, url: location.href, text: "hi,我发现了一个超有意思的昵称生成器 —— qtail"}); return 0;}();
+		(!navigator.share)? (() => {qtail.html.message("您的浏览器不支持分享功能！ (￣﹃￣)"); return -1;})():
+		(() => {navigator.share({title: location.title, url: location.href, text: "hi,我发现了一个超有意思的昵称生成器 —— qtail"}); return 0;})();
 	},
 	donation: () => {
-		qtailHtml.message("感谢您的支持!! ✪ ω ✪", 3);
+		qtail.html.message("感谢您的支持!! ✪ ω ✪");
 	},
 	exit: () => {
 		window.close();
@@ -78,7 +78,7 @@ const qtailHtml = {
 
 console.log(
 	"\n" +
-		" %c " + qtailHtml.appName + ' ' + qtailHtml.version + ' ' + qtailHtml.buildType + " by " + qtailHtml.author  +
+		" %c " + `${qtail.html.appName} ${qtail.html.version} ${qtail.html.buildType} by ${qtail.html.author}` +
 		"\n" +
 	"\n",
 	"color: #fff; background: #fd79a8; padding: 5px 0;"
