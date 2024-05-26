@@ -57,7 +57,7 @@ const page = {
 		footer.style.display = "none";
 		hideBtn.setAttribute("tooltip", "展开"),
 		hideBtn.setAttribute("onclick", "page.displayBox();");
-		hideBtn.innerHTML = "<img title=\"展开\" class=\"svg\" src=\"../img/plus-solid.svg\">";
+		hideBtn.innerHTML = "<img title=\"展开\" class=\"svg\" src=\"./img/plus-solid.svg\">";
 		return;
 	},
 	displayBox: () => {
@@ -66,7 +66,7 @@ const page = {
 		footer.style.display = "block";
 		hideBtn.setAttribute("onclick", "page.hideBox();");
 		hideBtn.setAttribute("tooltip", "收起");
-		hideBtn.innerHTML = "<img title=\"收起\" class=\"svg\" src=\"../img/minus-solid.svg\">";
+		hideBtn.innerHTML = "<img title=\"收起\" class=\"svg\" src=\"./img/minus-solid.svg\">";
 		return;
 	},
 	changeTip: target => {
