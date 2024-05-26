@@ -1,0 +1,132 @@
+<!--
+	file: index.html
+	name: qtail homepage
+	author: XiaozhiSans
+	creative date: 2024/03/30
+	update date: 2024/05/16
+-->
+
+<!doctype html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="qq昵称小尾巴生成器">
+		<meta name="keywords" content="qq, qq昵称, 昵称, 反转昵称, 反向昵称, 颠倒昵称, 特殊昵称, qq昵称小尾巴, github, qtail, XiaozhiSans">
+		<meta name="author" content="XiaozhiSans">
+		<meta name="viewport" content="width=device-width, initial-scale=0.9">
+		<title>qtail | qq昵称小尾巴生成器</title>
+		<link rel="fav icon" type="image/ico" href="favicon.ico">
+		<!-- 提前载入的脚本和层叠样式表 -->
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.7.1/dist/jquery.min.js"></script>
+		<!-- pwa 支持 -->
+		<link rel="manifest" href="manifest.json">
+
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="application-name" content="qtail">
+		<meta name="apple-mobile-web-app-title" content="qtail">
+		<meta name="theme-color" content="#ac9ece">
+		<meta name="msapplication-navbutton-color" content="#ac9ece">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="msapplication-starturl" content="/">
+
+		<link rel="icon" type="image/png" sizes="192x192" href="img/qt.192.png">
+		<link rel="apple-touch-icon" type="image/png" sizes="192x192" href="img/qt.192.png">
+		<link rel="icon" type="image/png" sizes="512x512" href="img/qt.512.png">
+		<link rel="apple-touch-icon" type="image/png" sizes="512x512" href="img/qt.512.png">
+	</head>
+	<body>
+		<!-- 没有脚本权限显示的内容 -->
+		<noscript>
+			<div class="noscriptPnl">
+				对不起,qtail需要JavaScript权限才能正常使用<br>
+				请确保你的浏览器支持JavaScript或JavaScript<br>
+				未被禁用后再试
+			</div>
+		</noscript>
+		<!-- end 没有脚本权限显示的内容 -->
+
+
+		<!-- 主窗口 -->
+		<div id="mainWindow">
+			<div class="tabPnl">
+				<!-- 窗口顶栏 -->
+				<p id="tabText">qq昵称小尾巴生成器<span id="pageVer">(v0520)</span></p>
+				<div class="tabBtnPnl">
+					<tabBtn class="share" onclick="qtailHtml.share();" tooltip="分享"><img title="分享" class="svg" src="img/share-from-square-solid.svg"></tabBtn>
+					<tabBtn class="donation" onclick="qtailHtml.donation();" tooltip="喜欢"><img title="喜欢" class="svg" src="img/heart-solid.svg"></tabBtn>
+					<tabBtn class="exit" onclick="qtailHtml.exit();" tooltip="关闭"><img title="关闭" class="svg" src="img/xmark-solid.svg"></tabBtn>
+				</div>
+			</div>
+			<div class="qtailBox">
+				<p id="verText">Loading...</p>
+				<p class="atext">互联网很美好，但你下载不了爱。<i> —— 游戏《破碎现实》</i></p>
+				<form id="qtail" action="" method="">
+					<div>
+						<label for="name" tooltip="(必填,最大20字符)">* 你的昵称:</label>
+						<input type="text" id="name" name="name" required value="qtail" maxlength="20">
+					</div><div>
+						<label for="tail" tooltip="(必填,最大70字符)" subtooltip="*注意*:目前不支持全角符号/中文符号,请用半角符号/英文符号结尾.或者把全角符号/中文符号放在尾巴开头.">* 你想要的小尾巴:</label>
+						<input type="text" id="tail" name="tail" required value="喵~" maxlength="70">
+					</div> <!-- <br>
+					<div>
+						<input type="checkbox" id="rstr" name="rstr" value="true" hidden>
+						<label for="rstr" id="rstr" title="当生成的昵称中尾巴没有按预期显示时开启。">rstr 模式（仅支持半角符号）</label>
+					</div> -->
+				<succBtn onclick="qtail.html.main();">生成</succBtn>
+				</form><br>
+				<img id="visitor-counter" src="https://count.getloli.com/get/@qtail?theme=rule34" title="页面累计被访问次数" onerror="this.src = 'img/visitor-counter-404.webp';">
+			</div>
+			<div class="resultBox">
+				<div>
+					<label for="result" tooltip="点击以复制" onclick="qtailHtml.copy();">这就是你的新昵称哒 ~(￣▽￣)~</label>
+					<!-- <copyBtn onclick="qtailHtml.copy();" tooltip="复制">📋</copyBtn> -->
+					<textarea id="result" title="点击以复制" onclick="qtailHtml.copy();" readonly>(x_x) 还没有生成昵称呢,快去试试吧</textarea>
+				</div>
+			</div>
+		</div>
+		<!-- end 主窗口 -->
+
+		<!-- 底栏窗口 -->
+		<footer id="bottomWindow">
+			<div class="footerBox">
+				<div class="tabPnl" id="footerTabFix">
+					<p id="tabText">底栏</p>
+					<div class="tabBtnPnl">
+						<tabBtn id="disabled"></tabBtn>
+						<tabBtn id="" tooltip="帮助" onclick="window.open('help/');" style="cursor: help;"><img title="帮助" class="svg" src="img/question-solid.svg"></tabBtn>
+						<tabBtn class="hide" id="hide" onclick="page.hideBox();" tooltip="收起"><img title="收起" class="svg" src="img/minus-solid.svg"></tabBtn>
+					</div>
+				</div>
+				<div class="footerPnl" name="links">
+					<p>
+						<a class="github outlink" href="https://github.com/XiaozhiSans/qtail">开放源代码</a> | <a href="#changeAlpha" onclick="page.changeBoxAlpha();">窗口透明度</a><br>
+						<a class="github outlink" href="https://github.com/XiaozhiSans/qtail/issues">提个建议</a> | <a href="#changeBg" onclick="page.changeBg();">更改桌面壁纸</a><br>
+						<a href="#closeTip" onclick="document.querySelector('#tipsBox').style.display='none';">关掉烦人的tip</a><br>
+						<icp></icp><br>
+						Copyright (c) 2024<br><a class="github outlink" href="https://github.com/XiaozhiSans">XiaozhiSans</a>
+					</p>
+				</div>
+			</div>
+		</footer>
+		<!-- end 底栏窗口 -->
+
+		<div id="tipsBox">
+			<p id="tips">Loading...</p>
+		</div>
+
+		<div id="messageBox">
+			<p id="message"></p>
+			<!-- <span id="messageTime">
+				<span id="bg"></span>
+				<span id="fg"></span>
+			</span> -->
+		</div>
+
+		<!-- 延迟加载的脚本 -->
+		<script type="text/javascript" src="js/qtail.loader.js"></script>
+		<!-- end 延迟加载的脚本 -->
+
+	</body>
+</html>

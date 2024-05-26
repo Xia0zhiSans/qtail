@@ -1,0 +1,18 @@
+{
+	"name": "qq昵称小尾巴生成器",
+	"short_name": "qtail",
+	"start_url": "/",
+	"scope": "/",
+	"lang": "zh-CN",
+	"theme_color": "#ac9ece",
+	"display": "standalone",
+	"icons": [{
+		"src": "img/qt.192.png",
+		"sizes": "192x192",
+		"type": "image/png"
+	},{
+		"src": "img/qt.512.png",
+		"sizes": "512x512",
+		"type": "image/png"
+	}]
+}
