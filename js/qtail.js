@@ -1,28 +1,30 @@
-const qtail = {
+export const qtail = {
 	appName: "qtail.js",
 	appNameShort: "qtail",
-	version: "v1.7.0",
-	buildVer: "(20240520)",
-	buildType: "Stable",
+	version: {
+		name: [1, 7, 2],
+		build: "2024/06/05",
+		type: "stable"
+	},
 	license: "MIT",
 	author: "XiaozhiSans",
 	url: "https://github.com/XiaozhiSans/qtail",
-	getVer: () => {
-		console.log(`[qtail.js] version: ${qtail.buildType} ${qtail.version}${qtail.buildVer}`);
+	getVer() {
+		console.log(`[qtail] version: ${qtail.version.type} v${qtail.version.name.join('.')}(${qtail.version.build})`);
 		return qtail.version;
 	},
-	generation: function(name, tail) {
-		console.log("[qtail.js] 正在生成新的昵称 (￣﹃￣)");
+	generation(name, tail) {
+		console.log("[qtail] 正在生成新的昵称 (￣﹃￣)");
 		// tail = qtail.rstr(tail);
 		tail = this.retail(tail);
-		console.log("[qtail.js] 尾巴重整完毕 (￣﹃￣) 结果为: " + tail);
+		console.log("[qtail] 尾巴重整完毕 (￣﹃￣) 结果为: " + tail);
 		let result = name + String.fromCharCode(8295) + tail + String.fromCharCode(8294);
 
-		console.log("[qtail.js] 新昵称生成完毕 (￣﹃￣) 结果为: " + result);
+		console.log("[qtail] 新昵称生成完毕 (￣﹃￣) 结果为: " + result);
 
 		return result;
 	},
-	retail: tail => {
+	retail(tail) {
 		let symbols = tail.replace(/[\u4e00-\u9fa5]|[\u4e00-\u9fa5]|[a-zA-Z]|[0-9]/g, '');
 		if(!symbols || symbols == '') {return tail;}
 		let name = eval(`tail.replace(/${symbols}/g, '');`);
@@ -65,7 +67,7 @@ const qtail = {
 
 console.log(
 	"\n" +
-		" %c " + `${qtail.appName} ${qtail.version} ${qtail.buildType} by ${qtail.author} `+
+		" %c " + `${qtail.appName} v${qtail.version.name.join('.')} ${qtail.version.type} by ${qtail.author} `+
 		"\n" +
 	"\n",
 	"color: #fff; background: #fd79a8; padding: 5px 0;"

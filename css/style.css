@@ -3,7 +3,7 @@
 * name: 石山css
 * author: XiaozhiSans
 * create date: 2024/03/29
-* update date: 2024/04/20
+* update date: 2024/06/05
 */
 
 /* 石山css,不要乱改,很可能牵一发动全身 (￣▽￣)" */
@@ -47,26 +47,26 @@ a:hover {
 	text-decoration: underline;
 }
 body {
+	--fonts: "微软雅黑", "Microsoft Yahei UI", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	color: white !important;
 	background-color: deeppink;
 	background-repeat: no-repeat;
-	font-family: "微软雅黑", "Microsoft Yahei UI", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: var(--fonts);
 }
 
 h1.title,
 h2.subtitle {}
 
-textarea#result {
+input {
+	border: 2px solid;
+	padding: 4px;
 	width: 95%;
 	resize: none;
 	font-size: 150%;
-	overflow: hidden;
-	-webkit-background-clip: text;
-	-webkit-background-size: 200% 100%;
 	border-radius: 10px 10px 10px 10px;
-	-webkit-text-fill-color: transparent;
-	-webkit-animation: rgbColor 4s infinite linear;
-	background-image: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
+	animation: rgbColor 12s infinite linear;
+	background-color: #000a;
+	outline: none;
 }
 
 div.noscriptPnl {
@@ -123,6 +123,7 @@ div.tabPnl {
 	margin: 0 20px;
 	font-weight: bold;
 	text-align: right;
+	-webkit-user-select: none;
 	user-select: none;
 	position: relative;
 	display: inline-block;
@@ -174,6 +175,9 @@ div#messageBox {
 div#messageBox[show] {
 	right: 0;
 }
+#message::before {
+	content: "(￣﹃￣) ";
+}
 span#messageTime {
 	display: grid;
 	width: 100%;
@@ -201,16 +205,14 @@ div#bg {
 	/* 会覆盖桌面端桌面壁纸，已禁用 */
 	/* background-image: url("https://pic.imgdb.cn/item/6607a1b59f345e8d03ce5061.jpg"); */
 }
+#bottomWindow {
+	margin-top: -40px;
+}
 p.atext {
-	background-color: #FF149364;
 	font-size: 75%;
 	font-weight: bold;
 	text-align: center;
-	-webkit-background-clip: text;
-	-webkit-background-size: 200% 100%;
-	-webkit-text-fill-color: transparent;
-	-webkit-animation: rgbColor 4s infinite linear;
-	background-image: -webkit-linear-gradient(left, #FF1493, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
+	animation: rgbColor 12s linear infinite;
 }
 
 p#verText {
@@ -224,37 +226,32 @@ p#tabText {
 
 p#tips {
 	position: relative;
-	&:before {
-		content: "Tip: ";
-	}
+}
+p#tips::before {
+	content: "Tip: ";
 }
 
 form#qtail {}
 
-label {}
+label {
+	margin-bottom: 4px;
+}
 
-input[type="text"] {
-	width: 95%;
-	font-size: 150%;
-	border-radius: 10px;
-	-webkit-background-clip: text;
-	-webkit-background-size: 200% 100%;
-	-webkit-text-fill-color: transparent;
-	-webkit-animation: rgbColor 4s infinite linear;
-	background-image: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
-}
-input[type="checkbox"] {
-	font-size: 120%;
-}
 
 @keyframes rgbColor {
-	0% {
-		background-position: 0 0;
-	}
-
-	100% {
-		background-position: -100% 0;
-	}
+	0%	{color: red;}
+	8.3%	{color: orange;}
+	16.6% {color: yellow;}
+	24.9% {color: green;}
+	33.2% {color: blue;}
+	41.5% {color: indigo;}
+	49.8% {color: violet;}
+	58.1% {color: indigo;}
+	66.4% {color: blue;}
+	74.7% {color: green;}
+	83% {color: yellow;}
+	91.3% {color: orange;}
+	100% {color: red;}
 }
 
 /* 旧的 rstr 模式美化样式,为了兼容性以保留
@@ -320,6 +317,7 @@ succBtn {
 	color: black;
 	background-color: #ffff99;
 	border-radius: 10px;
+	z-index: 2;
 }
 
 succBtn:hover {
@@ -398,6 +396,7 @@ img#visitor-counter {
 	}
 
 	body {
+		overflow-y: hidden;
 		background-size: auto 200%;
 		/* 桌面端默认桌面壁纸 */
 		background-image: url("https://cdn.jsdelivr.net/gh/XiaozhiSans/-/XiaozhiSans/background.jpg");
@@ -418,6 +417,11 @@ img#visitor-counter {
 	.btnPnl {
 		width: 100%;
 		margin: -2px 85%;
+	}
+}
+@media screen and (min-width: 1000px) and (max-height: 768px) {
+	body {
+		overflow-y: auto;
 	}
 }
 @media screen and (max-width: 768px) {
@@ -454,9 +458,15 @@ img#visitor-counter {
 		/* background-image: url("https://pic.imgdb.cn/item/6607a1b59f345e8d03ce5061.jpg"); */
 		margin: 5% 0;
 	}
+	div#tipsBox {
+		top: calc(80vh);
+	}
 	img#visitor-counter {
 		width: calc(60vw);
 		height: auto;
+	}
+	input {
+		font-size: 102%;
 	}
 
 	copyBtn {
@@ -473,5 +483,8 @@ img#visitor-counter {
 	.btnPnl {
 		width: 100%;
 		margin: -2px 80% 10px;
+	}
+	#bottomWindow {
+		margin-left: 12px;
 	}
 }

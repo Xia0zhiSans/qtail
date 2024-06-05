@@ -2,8 +2,8 @@
 	file: index.html
 	name: qtail homepage
 	author: XiaozhiSans
-	creative date: 2024/03/30
-	update date: 2024/05/16
+	create date: 2024/03/30
+	update date: 2024/06/05
 -->
 
 <!doctype html>
@@ -11,14 +11,14 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="qq昵称小尾巴生成器">
-		<meta name="keywords" content="qq, qq昵称, 昵称, 反转昵称, 反向昵称, 颠倒昵称, 特殊昵称, qq昵称小尾巴, github, qtail, XiaozhiSans">
+		<meta name="keywords" content="qq, qq昵称, 昵称, 反转昵称, 反向昵称, 颠倒昵称, 特殊昵称, qq昵称小尾巴, 昵称生成">
 		<meta name="author" content="XiaozhiSans">
 		<meta name="viewport" content="width=device-width, initial-scale=0.9">
 		<title>qtail | qq昵称小尾巴生成器</title>
 		<link rel="fav icon" type="image/ico" href="favicon.ico">
 		<!-- 提前载入的脚本和层叠样式表 -->
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.7.1/dist/jquery.min.js"></script>
+		<link rel="preconnect" type="text/html" href="/help/">
 		<!-- pwa 支持 -->
 		<link rel="manifest" href="manifest.json">
 
@@ -52,7 +52,7 @@
 		<div id="mainWindow">
 			<div class="tabPnl">
 				<!-- 窗口顶栏 -->
-				<p id="tabText">qq昵称小尾巴生成器<span id="pageVer">(v0520)</span></p>
+				<p id="tabText">qq昵称小尾巴生成器</p>
 				<div class="tabBtnPnl">
 					<tabBtn class="share" onclick="qtailHtml.share();" tooltip="分享"><img title="分享" class="svg" src="img/share-from-square-solid.svg"></tabBtn>
 					<tabBtn class="donation" onclick="qtailHtml.donation();" tooltip="喜欢"><img title="喜欢" class="svg" src="img/heart-solid.svg"></tabBtn>
@@ -67,22 +67,22 @@
 						<label for="name" tooltip="(必填,最大20字符)">* 你的昵称:</label>
 						<input type="text" id="name" name="name" required value="qtail" maxlength="20">
 					</div><div>
-						<label for="tail" tooltip="(必填,最大70字符)" subtooltip="*注意*:目前不支持全角符号/中文符号,请用半角符号/英文符号结尾.或者把全角符号/中文符号放在尾巴开头.">* 你想要的小尾巴:</label>
+						<label for="tail" tooltip="(必填,最大70字符)">* 你想要的小尾巴:</label>
 						<input type="text" id="tail" name="tail" required value="喵~" maxlength="70">
 					</div> <!-- <br>
 					<div>
 						<input type="checkbox" id="rstr" name="rstr" value="true" hidden>
 						<label for="rstr" id="rstr" title="当生成的昵称中尾巴没有按预期显示时开启。">rstr 模式（仅支持半角符号）</label>
 					</div> -->
-				<succBtn onclick="qtail.html.main();">生成</succBtn>
+				<succBtn onclick="qtail.html.main(); saveLastForm();">生成</succBtn>
 				</form><br>
 				<img id="visitor-counter" src="https://count.getloli.com/get/@qtail?theme=rule34" title="页面累计被访问次数" onerror="this.src = 'img/visitor-counter-404.webp';">
 			</div>
 			<div class="resultBox">
 				<div>
-					<label for="result" tooltip="点击以复制" onclick="qtailHtml.copy();">这就是你的新昵称哒 ~(￣▽￣)~</label>
+					<label for="result" tooltip="点击以复制" onclick="qtail.html.copy();">这就是你的新昵称哒 ~(￣▽￣)~</label>
 					<!-- <copyBtn onclick="qtailHtml.copy();" tooltip="复制">📋</copyBtn> -->
-					<textarea id="result" title="点击以复制" onclick="qtailHtml.copy();" readonly>(x_x) 还没有生成昵称呢,快去试试吧</textarea>
+					<input id="result" title="点击以复制" onclick="qtail.html.copy();" readonly placeholder="(￣▽￣)&quot; 还没有生成昵称呢,快去试试吧">
 				</div>
 			</div>
 		</div>
@@ -104,6 +104,7 @@
 						<a class="github outlink" href="https://github.com/XiaozhiSans/qtail">开放源代码</a> | <a href="#changeAlpha" onclick="page.changeBoxAlpha();">窗口透明度</a><br>
 						<a class="github outlink" href="https://github.com/XiaozhiSans/qtail/issues">提个建议</a> | <a href="#changeBg" onclick="page.changeBg();">更改桌面壁纸</a><br>
 						<a href="#closeTip" onclick="document.querySelector('#tipsBox').style.display='none';">关掉烦人的tip</a><br>
+						<br>版本: <span qtpv></span><br>
 						<icp></icp><br>
 						Copyright (c) 2024<br><a class="github outlink" href="https://github.com/XiaozhiSans">XiaozhiSans</a>
 					</p>
@@ -125,7 +126,8 @@
 		</div>
 
 		<!-- 延迟加载的脚本 -->
-		<script type="text/javascript" src="js/qtail.loader.js"></script>
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script defer type="module" src="./js/qtail.init.js"></script>
 		<!-- end 延迟加载的脚本 -->
 
 	</body>

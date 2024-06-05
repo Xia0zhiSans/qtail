@@ -3,16 +3,20 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=0.75">
 	<meta name="description" content="qq昵称小尾巴生成器帮助页">
-	<meta name="keywords" content="qq, qq昵称, 昵称, 反转昵称, 反向昵称, 颠倒昵称, 特殊昵称, qq昵称小尾巴, github, qtail, XiaozhiSans">
+	<meta name="keywords" content="qq, qq昵称, 昵称, 反转昵称, 反向昵称, 颠倒昵称, 特殊昵称, qq昵称小尾巴, 昵称生成">
 	<meta name="author" content="XiaozhiSans">
 	<title>qtail | 帮助文档</title>
 	<!--
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.7.1/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
 	<script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" defer></script>
 	-->
 	<link rel="fav icon" type="image/ico" href="../favicon.ico">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<style type="text/css">
+		body {
+			overflow: auto;
+			background-size: cover;
+		}
 		img {
 			border-radius: 10px;
 		}
@@ -23,10 +27,11 @@
 			background-color: #0004;
 			border-radius: 10px;
 			max-height: 64px;
+			max-width: 32px;
 			transition: all 2s;
 			user-select: none;padding: 5px; position: fixed; z-index: 10;
 			top: 0;
-			left: calc(8vw);
+			left: 0;
 		}
 		div#cata>ul {
 			opacity: 0;
@@ -34,8 +39,8 @@
 			pointer-events: none;
 		}
 		div#cata:hover {
-			left: -10px;
 			max-height: 1000px;
+			max-width: 1000px;
 		}
 		div#cata:hover>ul {
 			opacity: 1;
@@ -137,21 +142,21 @@
 			<ul>
 				<li>提供存储: <a class="github outlink" href="https://github.com">GitHub</a></li>
 				<li>核心代码: <a class="github outlink" href="https://github.com/XiaozhiSans/qtail.js">qtail.js</a></li>
-				<li>qL辅助代码: <a class="github outlink" href="https://github.com/jquery/jquery">jQuery</a></li>
+				<!-- <li>qL辅助代码: <a class="github outlink" href="https://github.com/jquery/jquery">jQuery</a></li> -->
 				<li>图标提供: <a class="github outlink" href="https://github.com/FortAwesome/Font-Awesome/">Font-Awesome</a></li>
-				<li>模块化加载: <a class="github outlink" href="https://github.com/XiaozhiSans/qtailLoader">qtailLoader</a></li>
-				<li>qt图标设计: <a class="outlink" href="https://www.logosc.cn/">标小智</a></li>
+				<!-- <li>模块化加载: <a class="github outlink" href="https://github.com/XiaozhiSans/qtailLoader">qtailLoader</a></li> -->
+				<li>页面图标: <a class="outlink" href="https://www.logosc.cn/">标小智</a></li>
 				<li>以及使用 qtail 的<a>你</a>!</li>
 			</ul>
 			<p>
-				qtail page v0520 | <qtail.js></qtail.js> | 更新于 <i>2024年5月26日 10点21分</i><br>
+				qtail page v0520 | qtail.js <span qtv></span> | 更新于 <i>2024年5月26日 10点21分</i><br>
 				Copyright (c) 2024 <a class="github outlink" href="https://github.com/XiaozhiSans">XiaozhiSans</a>
 			</p>
 		</div>
 	</div>
 
-	<script type="text/javascript" src="../js/qtail.js"></script>
-	<script type="text/javascript">
+	<script defer type="module">
+		import {qtail} from "../js/qtail.js";
 		document.addEventListener("keydown", function(event) {
 			// 热键绑定
 			if (event.code == "Escape") {
@@ -159,7 +164,7 @@
 			}
 		});
 
-		document.getElementsByTagName("qtail.js")[0].innerHTML = (qtail.appName + ' ' + qtail.version + ' ' + qtail.buildType);
+		document.querySelector("[qtv]").innerHTML = (`v${qtail.version.name.join('.')} ${qtail.version.type}`);
 	</script>
 
 
